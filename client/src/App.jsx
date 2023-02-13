@@ -9,6 +9,7 @@ import TourDetails from './pages/TourDetails';
 import SearchResultList from './pages/SearchResultList';
 import Tours from './pages/Tours';
 import { Navigate } from 'react-router-dom';
+import 'remixicon/fonts/remixicon.css'
 
 function App() {
 
