@@ -7,12 +7,15 @@ import effe1ttower from "../assets/images/carousel_effel_tower.jpg";
 import tajmahal from "../assets/images/carousel_taj_mahal.jpg";
 import greatwallofchina from "../assets/images/carousel_great_wall_of_china.jpg";
 import egyptpyramid from "../assets/images/carousel_egypt_pyramid.jpg"
+import ImageGallery from "../components/ImageGallery";
+import NewsLetter from "../components/NewsLetter";
+
 
 const Home = () => {
   return (
     <div>
-      <div className="h-150 sm:h-64 xl:h-80 2xl:h-96">
-        <Carousel className="rounded-none object-cover">
+      <div className="h-200 sm:h-64 xl:h-80 2xl:h-96">
+        <Carousel className="object-cover">
           <img
             src={tajmahal}
             alt="tajmahal"
@@ -55,7 +58,14 @@ const Home = () => {
         <h2 className="rounded-full p-2 text-2xl">Our Featured Tours</h2>
         <FeaturedTours />
       </div>
-
+      <div>
+      <span className="text-3xl font-bold text-gray-800 bg-yellow-300 p-1 pl-2 pr-2 rounded-full">Explore</span>
+        <h2 className="rounded-full p-2 text-2xl">Our Customer image gallery</h2>
+        <ImageGallery/>
+      </div>
+      <div className="pl-2 pr-2 rounded shadow-lg">
+        <NewsLetter/>
+      </div> 
     </div>
   );
 };

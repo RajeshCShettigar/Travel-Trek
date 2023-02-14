@@ -1,10 +1,5 @@
 const express=require('express');
-const createTour = require('../controllers/tourController');
-const updateTour = require('../controllers/tourController');
-const deleteTour = require('../controllers/tourController');
-const getSingleTour=require('../controllers/tourController');
-const getAllTour=require('../controllers/tourController');
-const getToursBySearch=require('../controllers/tourController');
+const {createTour,updateTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours} = require('../controllers/tourController');
 
 const router=express.Router();
 
@@ -21,12 +16,12 @@ router.delete("/:id",deleteTour);
 router.get("/:id",getSingleTour);
 
 //get all tours
-router.get("/",getAllTour);
+router.get("/",getAllTours);
 
 //get tours by city,maxdistance
-router.get("/search/getTourBySearch",getToursBySearch);
+router.get("/search/getTourBySearch",getTourBySearch);
 
 //get featured tour
 router.get("/search/getFeaturedTours",getFeaturedTours);
 
-export default router;
+module.exports = router;

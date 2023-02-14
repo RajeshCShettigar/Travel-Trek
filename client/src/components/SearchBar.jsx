@@ -20,18 +20,18 @@ const SearchBar = () => {
        <form>
         <div className="flex flex-row flex-wrap">
         <div className="flex flex-row mr-2">
-        <i class="ri-map-pin-line"></i>
+        <i className="ri-map-pin-line"></i>
         <h6>Location</h6>
         <input type="text" name="location" placeholder="Where are you going?"className="bg-gray-100 rounded-full" ref={locationRef}/>
         </div>
         <div className="flex flex-row mr-2">
-        <i class="ri-pin-distance-line"></i>
+        <i className="ri-pin-distance-line"></i>
         <h6>Distance</h6>
         <input type="number" name="distance" placeholder="Distance k/m" className="bg-gray-100 rounded-full"
         ref={distanceRef}/>
         </div>
         <div className="flex flex-row">
-        <i class="ri-group-line"></i>
+        <i className="ri-group-line"></i>
         <h6>Max People</h6>
         <input type="number" name="numberofpeople" placeholder="0"className="bg-gray-100 rounded-full" ref={maxGroupSizeRef}/>
         </div>

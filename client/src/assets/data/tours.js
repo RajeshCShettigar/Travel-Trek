@@ -5,6 +5,10 @@ import tourImg04 from "../images/tour-img04.jpg";
 import tourImg05 from "../images/tour-img05.jpg";
 import tourImg06 from "../images/tour-img06.jpg";
 import tourImg07 from "../images/tour-img07.jpg";
+import tajmahal from "../images/1_tajmahal.jpg";
+import goldentemple from "../images/2_goldern_temple.jpg";
+import dallake from "../images/3_dallake.jpg";
+import manali from "../images/4_manali.jpg";
 
 const tours = [
   {
@@ -149,6 +153,78 @@ const tours = [
     ],
     avgRating: 4.5,
     photo: tourImg03,
+    featured: false,
+  },
+  {
+    id: "09",
+    title: "Taj Mahal",
+    city: "Agra, India",
+    distance: 400,
+    price: 990,
+    maxGroupSize: 4,
+    desc: "this is the description",
+    reviews: [
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
+    ],
+    avgRating: 4.3,
+    photo: tajmahal,
+    featured: false,
+  },
+  {
+    id: "10",
+    title: "Golden temple",
+    city: "Amrithsar,India",
+    distance: 500,
+    price: 990,
+    maxGroupSize: 8,
+    desc: "this is the description",
+    reviews: [
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
+    ],
+    avgRating: 4.5,
+    photo: goldentemple,
+    featured: true,
+  },
+  {
+    id: "11",
+    title: "Dal Lake",
+    city: "Kashmir, India",
+    distance: 500,
+    price: 99,
+    maxGroupSize: 8,
+    desc: "this is the description",
+    reviews: [
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
+    ],
+    avgRating: 4.5,
+    photo: dallake,
+    featured: false,
+  },
+  {
+    id: "12",
+    title: "Manali",
+    city: "Himachal-Pradesh, India",
+    distance: 500,
+    price: 99,
+    maxGroupSize: 8,
+    desc: "this is the description",
+    reviews: [
+      {
+        name: "jhon doe",
+        rating: 4.6,
+      },
+    ],
+    avgRating: 4.5,
+    photo: tourImg07,
     featured: false,
   },
 ];

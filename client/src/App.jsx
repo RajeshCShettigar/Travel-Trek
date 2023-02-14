@@ -14,7 +14,7 @@ import 'remixicon/fonts/remixicon.css'
 function App() {
 
   return (
-    <div className="h-[100vh]">
+    <div className="bg-white">
       <BrowserRouter>
       <Header/>
         <Routes>

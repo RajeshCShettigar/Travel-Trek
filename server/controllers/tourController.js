@@ -2,7 +2,7 @@ const Tour = require('../models/Tour');
 
 
 //create tours
-export const createTour = async (req, resp) => {
+const createTour = async (req, resp) => {
     const newTour = new Tour(req.body);
     try {
         const savedTour = await newTour.save(req.body);
@@ -24,7 +24,7 @@ export const createTour = async (req, resp) => {
 }
 
 //update tours
-export const updatedTour = async (req, resp) => {
+const updateTour = async (req, resp) => {
     const id = req.params.id;
     try {
         const updatedTour = await Tour.findByIdAndUpdate(id, {
@@ -49,7 +49,7 @@ export const updatedTour = async (req, resp) => {
 }
 
 //delete tours
-export const deleteTour = async (req, resp) => {
+const deleteTour = async (req, resp) => {
     const id = req.params.id;
     try {
         const updatedTour = await Tour.findByIdAndDelete(id);
@@ -72,7 +72,7 @@ export const deleteTour = async (req, resp) => {
 }
 
 //get single tour
-export const getSingleTour = async (req, resp) => {
+const getSingleTour = async (req, resp) => {
     const id = req.params.id;
     try {
         const tour = await Tour.findById(id);
@@ -95,7 +95,7 @@ export const getSingleTour = async (req, resp) => {
 }
 
 //getall tours
-export const getAllTours = async (req, resp) => {
+const getAllTours = async (req, resp) => {
     const page = parseInt(req.query.page);
 
     try {
@@ -122,7 +122,7 @@ export const getAllTours = async (req, resp) => {
 }
 
 //search tour by city,distance,maxgroup size
-export const getTourBySearch = async (req, resp) => {
+const getTourBySearch = async (req, resp) => {
     const city = new RegExp(req.query.city, 'i');
     const distance = parseInt(req.query.distance);
     const maxGroupSize = parseInt(req.query.maxGroupSize);
@@ -150,3 +150,33 @@ export const getTourBySearch = async (req, resp) => {
             });
     }
 }
+
+const getFeaturedTours=async(req,resp)=>{
+    const city = new RegExp(req.query.city, 'i');
+    const distance = parseInt(req.query.distance);
+    const maxGroupSize = parseInt(req.query.maxGroupSize);
+    try {
+        const tours = await Tour.find({
+            city,
+            distance: { $gte: distance },
+            maxGroupSize: { $gte: maxGroupSize }
+        });
+        resp
+            .status(200)
+            .json({
+                success: true,
+                count: tours.length,
+                message: 'Successfully retrieved',
+                data: tours
+            });
+    }
+    catch (err) {
+        resp
+            .status(404)
+            .json({
+                success: false,
+                message: 'Not found'
+            });
+    }
+}
+module.exports={createTour,updateTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours};

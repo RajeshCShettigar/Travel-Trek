@@ -9,7 +9,7 @@ const FeaturedTours = () => {
     <div className="flex flex-wrap justify-center item-center">
       {
       tourdata.map(tour =>(
-        <div className="p-4" key={tour.id}>
+        <div className="p-4 object-cover" key={tour.id}>
           <TourCard tour={tour}/>
         </div>
       ))
