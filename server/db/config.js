@@ -13,5 +13,5 @@ const connect=async()=>{
          console.log("Mongodb connection error :"+err);
     }
 };
-
+connect();
 module.exports=connect;

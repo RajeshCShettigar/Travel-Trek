@@ -1,5 +1,4 @@
-const Tour = require('../models/Tour');
-
+const Tour = require('../models/tours');
 
 //create tours
 const createTour = async (req, resp) => {
@@ -10,6 +9,7 @@ const createTour = async (req, resp) => {
             .status(200)
             .json({
                 success: true,
+                count:tours.length,
                 message: 'Successfully created',
                 data: savedTour
             });
@@ -97,7 +97,7 @@ const getSingleTour = async (req, resp) => {
 //getall tours
 const getAllTours = async (req, resp) => {
     const page = parseInt(req.query.page);
-
+    console.log(page);
     try {
         const tours = await Tour.find({})
             .skip(page * 8)
@@ -152,15 +152,10 @@ const getTourBySearch = async (req, resp) => {
 }
 
 const getFeaturedTours=async(req,resp)=>{
-    const city = new RegExp(req.query.city, 'i');
-    const distance = parseInt(req.query.distance);
-    const maxGroupSize = parseInt(req.query.maxGroupSize);
     try {
         const tours = await Tour.find({
-            city,
-            distance: { $gte: distance },
-            maxGroupSize: { $gte: maxGroupSize }
-        });
+            featured:true
+        }).limit(8);
         resp
             .status(200)
             .json({
@@ -179,4 +174,13 @@ const getFeaturedTours=async(req,resp)=>{
             });
     }
 }
-module.exports={createTour,updateTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours};
+const getTourCount=async(req,resp)=>{
+    try {
+        const tourCount=await Tour.estimatedDocumentCount();
+        resp.status(200).json({success:true,message:'Successfully retrieved',data:tourCount});
+    }catch(err){
+        resp.status(404).json({success:false,message:'Not found'});
+    }   
+};
+
+module.exports={createTour,updateTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours,getTourCount};
