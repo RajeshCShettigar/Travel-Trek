@@ -1,16 +1,15 @@
 const User = require('../models/users');
 
 const createUser = async (req, resp) => {
-    const newUser = new User(req.body);
+   
     try {
-        const savedTour = await newUser.save(req.body);
+        const newUser = await new User(req.body);
         resp
             .status(200)
             .json({
                 success: true,
-                count:user.length,
                 message: 'Successfully created',
-                data: savedTour
+                data: newUser
             });
     } catch (err) {
         resp
@@ -33,7 +32,7 @@ const updateUser = async (req, resp) => {
             .json({
                 success: true,
                 message: 'successfully updated',
-                data: updatedTour,
+                data: updatedUser,
             });
     }
     catch (err) {
