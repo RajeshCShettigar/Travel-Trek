@@ -1,8 +1,11 @@
 import React from 'react'
 
+
 const Tours = () => {
   return (
-    <div>Tours</div>
+    <div>
+      tours
+    </div>
   )
 }
 

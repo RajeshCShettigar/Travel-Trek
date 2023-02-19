@@ -18,11 +18,26 @@ const tours = [
     distance: 300,
     price: 99,
     maxGroupSize: 10,
-    desc: "this is the description",
+    address:"somewhere on earth",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     reviews: [
       {
         name: "jhon doe",
         rating: 4.6,
+        reviewText:"Awesome place to visit",
+        createdAt: "2020-01-01"
+      },
+      {
+        name: "jhon doe",
+        rating: 4.6,
+        reviewText:"Awesome place to visit",
+        createdAt: "2020-01-01"
+      },
+      {
+        name: "jhon doe",
+        rating: 4.6,
+        reviewText:"Awesome place to visit",
+        createdAt: "2020-01-01"
       },
     ],
     avgRating: 4.5,
@@ -36,7 +51,8 @@ const tours = [
     distance: 400,
     price: 99,
     maxGroupSize: 8,
-    desc: "this is the description",
+    address:"somewhere on earth",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     reviews: [
       {
         name: "jhon doe",
@@ -54,7 +70,8 @@ const tours = [
     distance: 500,
     price: 99,
     maxGroupSize: 8,
-    desc: "this is the description",
+    address:"somewhere on earth",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     reviews: [
       {
         name: "jhon doe",
@@ -70,9 +87,11 @@ const tours = [
     title: "Beautiful Sunrise, Thailand",
     city: "Thailand",
     distance: 500,
+
     price: 99,
     maxGroupSize: 8,
-    desc: "this is the description",
+    address:"somewhere on earth",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     reviews: [
       {
         name: "jhon doe",
@@ -108,6 +127,7 @@ const tours = [
     distance: 500,
     price: 99,
     maxGroupSize: 8,
+    address:"somewhere on earth",
     desc: "this is the description",
     reviews: [
       {
@@ -144,6 +164,7 @@ const tours = [
     distance: 500,
     price: 99,
     maxGroupSize: 8,
+    address:"somewhere on earth",
     desc: "this is the description",
     reviews: [
       {
@@ -162,6 +183,7 @@ const tours = [
     distance: 400,
     price: 990,
     maxGroupSize: 4,
+    address:"somewhere on earth",
     desc: "this is the description",
     reviews: [
       {
@@ -198,6 +220,7 @@ const tours = [
     distance: 500,
     price: 99,
     maxGroupSize: 8,
+    address:"somewhere on earth",
     desc: "this is the description",
     reviews: [
       {

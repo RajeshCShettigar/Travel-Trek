@@ -7,9 +7,18 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'ubuntu': ['Ubuntu', 'sans-serif'],
+        'shantell': ['Shantell Sans', 'serif'] 
+      },
+      backgroundImage: {
+        'hero': "url('./assets/images/travelhome.jpg')",
+      },
+    },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('tailwind-scrollbar'),
   ],
 }

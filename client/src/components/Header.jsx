@@ -8,11 +8,11 @@ const Header = () => {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2 rounded dark:bg-gray-900 shadow-lg sticky top-0 z-10">
+      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2 rounded shadow-lg sticky top-0 z-10">
         <div className="container flex flex-wrap items-center justify-between">
           <a href="#" className="md:ml-12 flex items-center">
             <img src={logo} className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-xl font-semibold whitespace-nowrap font-shantell">
               ExcursionEase
             </span>
           </a>
@@ -20,7 +20,7 @@ const Header = () => {
             onClick={() => setIsOpen(!isOpen)}
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -45,47 +45,47 @@ const Header = () => {
             } w-full md:block md:w-auto`}
             id="navbar-default"
           >
-            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0 font-shantell md:text-md">
               <li>
                 <Link
                   to="/home"
-                  className="block py-2 pl-3 pr-4 text-gray-700 bg-blue-700 rounded md:bg-transparent md:hover:text-blue-700 md:p-2 dark:text-white"
+                  className="block py-2 pl-3 pr-4  bg-blue-700 rounded md:bg-transparent md:hover:text-blue-700 md:p-2 "
                   aria-current="page"
                 >
-                  Home
+                  <i className="ri-home-4-line"></i>Home
                 </Link>
               </li>
               <li>
                 <a
                   href="#about"
-                  className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2"
                 >
-                  About
+                  <i className="ri-information-line"></i>About
                 </a>
               </li>
               <li>
                 <Link
                   to="/tours"
                   href="#"
-                  className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mr-16"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2 "
                 >
-                  Tours
+                 <i className="ri-suitcase-2-line"></i>Tours
                 </Link>
               </li>
               <li>
                 <Link
                   to="/login"
-                  className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:bg-red-600 md:rounded-full md:p-2 md:px-4"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:bg-pink-600 md:rounded-full md:p-2 md:px-4"
                 >
-                  Login
+                  <i className="ri-login-box-line"></i>Login
                 </Link>
               </li>
               <li>
                 <Link
                   to="/register"
-                  className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:bg-red-600 md:rounded-full md:p-2 md:px-2"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  md:bg-pink-600 md:rounded-full md:p-2 md:px-2"
                 >
-                  Register
+                 <i className="ri-login-box-fill"></i> Register
                 </Link>
               </li>
             </ul>

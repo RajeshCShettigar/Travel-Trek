@@ -14,7 +14,7 @@ import 'remixicon/fonts/remixicon.css'
 function App() {
 
   return (
-    <div className="bg-white">
+    <div className="scroll-smooth hover:scroll-auto">
       <BrowserRouter>
       <Header/>
         <Routes>

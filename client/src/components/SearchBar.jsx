@@ -16,7 +16,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="bg-gray-200 rounded-full items-center p-6 text-center shadow-sm ml-4 mr-8 text-pink-500">
+    <div className="bg-gray-50 rounded-full items-center p-6 text-center shadow-sm ml-4 mr-8 text-pink-500 font-shantell">
        <form>
         <div className="flex flex-row flex-wrap">
         <div className="flex flex-row mr-2">

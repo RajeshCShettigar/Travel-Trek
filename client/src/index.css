@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@1,300&family=Ubuntu:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer utilities {
+    .scrollbar-medium::-webkit-scrollbar {
+      width: 8px;
+
+    }
+  }
+@layer utilities {
+    
     @variants responsive {
         .masonry {
             column-gap: 1em;

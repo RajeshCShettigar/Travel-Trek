@@ -8,7 +8,7 @@ const TourCard = ({ tour }) => {
   const avgRating=totalRating===0?"":totalRating===1?totalRating:totalRating/reviews?.length;
   return (
     <>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg hover:scale-105">
+      <div className="max-w-md rounded overflow-hidden shadow-md hover:shadow-2xl">
         <div className="relative">
         <img src={photo} className="w-full height-full object-cover"
           alt="Sunset in the mountains"
