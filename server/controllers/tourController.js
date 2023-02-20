@@ -1,4 +1,4 @@
-const Tour = require('../models/tours');
+const Tour = require('../models/toursModel');
 
 //create tours
 const createTour = async (req, resp) => {
@@ -14,11 +14,13 @@ const createTour = async (req, resp) => {
                 data: savedTour
             });
     } catch (err) {
+        console.log(err);
         resp
             .status(500)
             .json({
                 success: false,
-                message: 'Failed to create.Try again'
+                message: 'Failed to create.Try again',
+                error: err
             });
     }
 }
@@ -96,13 +98,10 @@ const getSingleTour = async (req, resp) => {
 
 //getall tours
 const getAllTours = async (req, resp) => {
-    const page = parseInt(req.query.page);
-    console.log(page);
+   // const page = parseInt(req.query.page);
+   // console.log(page);
     try {
-        const tours = await Tour.find({})
-            .populate("reviews")
-            .skip(page * 8)
-            .limit(8);
+        const tours = await Tour.find({});
         resp
             .status(200)
             .json({
@@ -127,12 +126,13 @@ const getTourBySearch = async (req, resp) => {
     const city = new RegExp(req.query.city, 'i');
     const distance = parseInt(req.query.distance);
     const maxGroupSize = parseInt(req.query.maxGroupSize);
+    console.log(city, distance, maxGroupSize);
     try {
         const tours = await Tour.find({
-            city,
-            distance: { $gte: distance },
-            maxGroupSize: { $gte: maxGroupSize }
-        }).populate("reviews");
+            "city":city,
+            "distance": { $gte: distance },
+            "maxGroupSize": { $gte: maxGroupSize }
+        });
         resp
             .status(200)
             .json({
@@ -143,6 +143,7 @@ const getTourBySearch = async (req, resp) => {
             });
     }
     catch (err) {
+        
         resp
             .status(404)
             .json({
@@ -155,8 +156,8 @@ const getTourBySearch = async (req, resp) => {
 const getFeaturedTours=async(req,resp)=>{
     try {
         const tours = await Tour.find({
-            featured:true
-        }).limit(8).populate("reviews");
+            "featured":true
+        });
         resp
             .status(200)
             .json({

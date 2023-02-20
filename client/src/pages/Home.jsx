@@ -2,10 +2,6 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 import ServicesList from "../components/ServicesList";
 import FeaturedTours from "../components/FeaturedTours";
-//import effe1ttower from "../assets/images/carousel_effel_tower.jpg";
-//import tajmahal from "../assets/images/carousel_taj_mahal.jpg";
-//import greatwallofchina from "../assets/images/carousel_great_wall_of_china.jpg";
-//import egyptpyramid from "../assets/images/carousel_egypt_pyramid.jpg"
 import ImageGallery from "../components/ImageGallery";
 import NewsLetter from "../components/NewsLetter";
 
@@ -13,7 +9,7 @@ import NewsLetter from "../components/NewsLetter";
 const Home = () => {
   return (
     <div>
-      <div className="bg-hero w-full bg-cover h-96 object-cover bg-center mt-0">
+      <div className="bg-hero w-full bg-cover h-[28rem] object-cover bg-center mt-0">
       <div className="flex flex-col md:pl-6 justify-center" id="about">
         <div className="p-4">
           <p className="text-center md:text-2xl text-white font-shantell p-5">

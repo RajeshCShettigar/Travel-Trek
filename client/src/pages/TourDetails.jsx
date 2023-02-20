@@ -44,8 +44,8 @@ const TourDetails = () => {
     alert(time);
   }
   return (
-    <div className="md:ml-8 md:mr-8 m-2 shadow-2xl flex md:flex-row">
-      <div className="bg-white shadow-lg overflow-hidden w-3/5">
+    <div className="md:ml-6 md:mr-6 m-2 shadow-2xl flex md:flex-row">
+      <div className="bg-white shadow-lg overflow-hidden w-2/3">
         <img
           className="h-96 object-cover object-center w-full"
           src={photo}
@@ -54,7 +54,7 @@ const TourDetails = () => {
         <div className="p-4 m-6">
           <div className="flex items-center justify-between mb-4 mr-6">
             <h2 className="font-bold text-xl mb-2">{title}</h2>
-            <span className="block text-amber-300">
+            <span className="block text-amber-600 text-bold text-xl">
               <i className="ri-star-line"></i>
               {avgRating === 0 ? null : avgRating}
               {totalRating === 0 ? (
@@ -86,14 +86,11 @@ const TourDetails = () => {
           <div className="flex flex-col flex-wrap justify-between pb-4">
             <h3>Reviews ({reviews?.length} reviews)</h3>
             <form onSubmit={handleSubmit}>
-              <div className="flex border-pink-200 shadow-md rounded-lg">
-                <input
-                  ref={reviewMsgRef}
-                  type="text"
-                  placeholder="share your thoughts..."
-                  className="w-full rounded-lg"
-                  required
-                />
+              <div className="flex border-pink-200 shadow-sm rounded-lg p-2">
+              <div className="relative z-0 w-full mb-2 group mt-2">
+                <input type="text" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required ref={reviewMsgRef}/>
+                <label htmlFor="fullname" className="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Share your thoughts...</label>
+                </div>
                 <div className="flex flex-row items-center ml-2 mr-2">
                   <span onClick={() => setTourRating(1)}>
                     <i className="ri-star-line"></i>
@@ -113,7 +110,7 @@ const TourDetails = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn border-2 bg-teal-400 p-2 rounded-full ml-4"
+                  className="btn border-2 bg-teal-400 rounded-full ml-4"
                 >
                   Share
                 </button>
@@ -122,7 +119,7 @@ const TourDetails = () => {
             <div className="user-reviews container flex flex-col flex-wrap">
               {reviews.map((review) => {
                 return (
-                  <div className="mt-3 shadow-sm flex flex-wrap flex-col p-3">
+                  <div className="mt-3 shadow-md flex flex-wrap flex-col p-3"key={review.id}>
                     <div className="flex items-center flex-row mr-4">
                       <div className="flex-shrink-0">
                         <img
@@ -153,15 +150,9 @@ const TourDetails = () => {
               })}
             </div>
           </div>
-          <div className="items-center justify-between">
-            <a href="#"
-            className="bg-pink-700 text-white text-sm font-semibold rounded hover:bg-green-400 p-3">
-              Book Now
-            </a>
-          </div>
         </div>
       </div>
-      <div className="w-2/5 ml-2">
+      <div className="w-1/3 ml-2">
         <Bookings price={price}/>
       </div>
     </div>

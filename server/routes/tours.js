@@ -5,7 +5,7 @@ const router=express.Router();
 const {verifyAdmin}=require('../utils/verifyAuth');
 
 //create new tour
-router.post("/",verifyAdmin,createTour); 
+router.post("/",createTour); 
 
 //update tour
 router.post("/:id",verifyAdmin,updateTour);

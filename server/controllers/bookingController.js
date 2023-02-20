@@ -1,4 +1,4 @@
-const booking=require('../models/bookings');
+const booking=require('../models/bookingsModel');
 
 const createBooking=async(req,resp)=>{
     const newBooking=new booking(req.body);

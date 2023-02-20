@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2 rounded shadow-lg sticky top-0 z-10">
+      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-1 rounded shadow-lg sticky top-0 z-10">
         <div className="container flex flex-wrap items-center justify-between">
           <a href="#" className="md:ml-12 flex items-center">
             <img src={logo} className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />

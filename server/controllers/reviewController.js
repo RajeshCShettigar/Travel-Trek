@@ -1,5 +1,5 @@
-const tour=require("../models/tours");
-const review=require("../models/reviews");
+const tour=require("../models/toursModel");
+const review=require("../models/reviewsModel");
 
 const createReview=async(req,resp)=>{
     const tourId=req.params.tourId;
