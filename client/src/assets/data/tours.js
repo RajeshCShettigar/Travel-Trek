@@ -1,15 +1,3 @@
-import tourImg01 from "../images/tour-img01.jpg";
-import tourImg02 from "../images/tour-img02.jpg";
-import tourImg03 from "../images/tour-img03.jpg";
-import tourImg04 from "../images/tour-img04.jpg";
-import tourImg05 from "../images/tour-img05.jpg";
-import tourImg06 from "../images/tour-img06.jpg";
-import tourImg07 from "../images/tour-img07.jpg";
-import tajmahal from "../images/1_tajmahal.jpg";
-import goldentemple from "../images/2_goldern_temple.jpg";
-import dallake from "../images/3_dallake.jpg";
-import manali from "../images/4_manali.jpg";
-
 const tours = [
   {
     id: "01",
@@ -60,7 +48,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg02,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: true,
   },
   {
@@ -79,7 +67,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg03,
+    photo:"https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: true,
   },
   {
@@ -99,7 +87,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg04,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: true,
   },
   {
@@ -117,7 +105,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg05,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -136,7 +124,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg06,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -154,7 +142,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg07,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -173,7 +161,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg03,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -192,7 +180,7 @@ const tours = [
       },
     ],
     avgRating: 4.3,
-    photo: tajmahal,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -210,7 +198,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: goldentemple,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: true,
   },
   {
@@ -229,7 +217,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: dallake,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
   {
@@ -247,7 +235,7 @@ const tours = [
       },
     ],
     avgRating: 4.5,
-    photo: tourImg07,
+    photo: "https://res.cloudinary.com/dsajqm6yg/image/upload/v1676897766/travel/2_effel_tower_zgre9j.jpg",
     featured: false,
   },
 ];

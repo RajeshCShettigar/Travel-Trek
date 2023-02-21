@@ -7,9 +7,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import TourDetails from './pages/TourDetails';
 import SearchResultList from './pages/SearchResultList';
-import Tours from './pages/Tours';
 import { Navigate } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
+
 
 function App() {
 
@@ -20,7 +20,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home"/>}/>
           <Route path="/home" element={<Home/>}/>
-          <Route path="/tours" element={<Tours/>}/>
           <Route path="/tours/:id" element={<TourDetails/>}/>
           <Route path="/payment" element={<h1>Payment</h1>}/>
           <Route path="/login" element={<Login/>}/>

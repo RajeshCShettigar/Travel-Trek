@@ -1,18 +1,17 @@
 import React from 'react'
 import logo from '../assets/images/logo.png';
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className="">
-    <footer className="shadow-lg bg-slate-800 sm:p-6 ">
+    <footer className="shadow-lg bg-[#ffffff] sm:p-6 ">
         <div className="md:flex md:justify-center">
         <div className="mb-6 md:mb-0 md:mr-96">
                 <a href="https://flowbite.com/" className="flex items-center">
-                    <img src={logo} className="h-8 mr-3" alt="FlowBite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap ">ExcursionEase</span>
+                    <img src={logo} className="h-14 mr-3" alt="FlowBite Logo" />
                 </a>
             </div>
-            <div className="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3">
+            <div className="grid grid-cols-3 gap-6 sm:gap-4 sm:grid-cols-3">
                 <div>
                     <h2 className="mb-3 text-sm font-semibold text-gray-900 uppercase ">Discover</h2>
                     <ul className="text-gray-600 ">
@@ -29,15 +28,12 @@ const Footer = () => {
                 </div>
                 <div>
                     <h2 className="mb-3 text-sm font-semibold text-gray-900 uppercase ">Quick Links</h2>
-                    <ul className="text-gray-600 ">
+                    <ul className="text-gray-600">
                         <li className="mb-1">
-                            <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Gallery</a>
+                            <Link to="/login" className="hover:underline">Login</Link>
                         </li>
                         <li className="mb-1">
-                            <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Login</a>
-                        </li>
-                        <li className="mb-1">
-                            <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Register</a>
+                            <Link to="/register" className="hover:underline">Register</Link>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +44,7 @@ const Footer = () => {
                             <a href="#" className="hover:underline"><i className="ri-links-line"></i><span className="text-bold">Address :</span>4th block Bangalore</a>
                         </li>
                         <li className="mb-1">
-                        <a href="#" className="hover:underline"><i className="ri-mail-line"></i><span className="text-bold">Email :</span>excursionease@gmail.com</a>
+                        <a href="#" className="hover:underline"><i className="ri-mail-line"></i><span className="text-bold">Email :</span>traveltrek@gmail.com</a>
                         </li>
                         <li className="mb-1">
                         <a href="#" className="hover:underline"><i className="ri-phone-line"></i><span className="text-bold">Phone :</span>+043245623</a>
@@ -57,9 +53,9 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <hr className="my-3 border-gray-200 sm:mx-auto lg:my-8" />
+        <hr className="my-3 border-gray-200 sm:mx-auto" />
         <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm ml-16 text-gray-500 text-center ">© 2023 <a href="https://flowbite.com/" className="hover:underline">ExcursionEase™</a>. All Rights Reserved.
+            <span className="text-sm ml-16 text-gray-500 text-center ">© 2023 <a href="https://flowbite.com/" className="hover:underline">Travel-Trek™</a>. All Rights Reserved.
             </span>
             <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0 md:mr-16">
                 <a href="#" className="text-gray-500 hover:text-gray-900 ">
@@ -77,7 +73,6 @@ const Footer = () => {
             </div>
         </div>
     </footer>
-    </div>
   )
 }
 

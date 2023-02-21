@@ -1,20 +1,27 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useContext } from "react";
+import { Link ,useNavigate} from "react-router-dom";
 import logo from "../assets/images/logo.png";
-
+import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const navigate=useNavigate();
+  
+  const {user,dispatch}=useContext(AuthContext);
 
+  const handleLogout=()=>{
+    dispatch({type:"LOGOUT"});
+    navigate("/");
+  }
+  
   return (
     <>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-1 rounded shadow-lg sticky top-0 z-10">
+      <nav className="bg-[#ffffff] border-gray-200 px-2 sm:px-4 rounded shadow-lg sticky top-0 z-10">
         <div className="container flex flex-wrap items-center justify-between">
           <a href="#" className="md:ml-12 flex items-center">
-            <img src={logo} className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center text-xl font-semibold whitespace-nowrap font-shantell">
-              ExcursionEase
-            </span>
+            <img src={logo} className="h-12 mr-3 sm:h-9" alt="logo" />
+
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -45,37 +52,20 @@ const Header = () => {
             } w-full md:block md:w-auto`}
             id="navbar-default"
           >
-            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0 font-shantell md:text-md">
+            <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0 font-ubuntu md:text-md">
               <li>
                 <Link
                   to="/home"
-                  className="block py-2 pl-3 pr-4  bg-blue-700 rounded md:bg-transparent md:hover:text-blue-700 md:p-2 "
+                  className="block py-2 pl-3 pr-4  bg-blue-700 rounded md:bg-transparent md:hover:text-pink-600 md:p-2 "
                   aria-current="page"
                 >
                   <i className="ri-home-4-line"></i>Home
                 </Link>
               </li>
               <li>
-                <a
-                  href="#about"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2"
-                >
-                  <i className="ri-information-line"></i>About
-                </a>
-              </li>
-              <li>
-                <Link
-                  to="/tours"
-                  href="#"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-2 "
-                >
-                 <i className="ri-suitcase-2-line"></i>Tours
-                </Link>
-              </li>
-              <li>
                 <Link
                   to="/login"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:bg-pink-600 md:rounded-full md:p-2 md:px-4"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600 md:border-1 md:rounded-full md:p-2 md:px-4"
                 >
                   <i className="ri-login-box-line"></i>Login
                 </Link>
@@ -83,7 +73,7 @@ const Header = () => {
               <li>
                 <Link
                   to="/register"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  md:bg-pink-600 md:rounded-full md:p-2 md:px-2"
+                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600  md:border-1 md:rounded-full md:p-2 md:px-2"
                 >
                  <i className="ri-login-box-fill"></i> Register
                 </Link>
