@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import TourDetails from './pages/TourDetails';
-import SearchResultList from './pages/SearchResultList';
 import { Navigate } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 

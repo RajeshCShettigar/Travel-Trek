@@ -17,7 +17,7 @@ const Header = () => {
   
   return (
     <>
-      <nav className="bg-[#ffffff] border-gray-200 px-2 sm:px-4 rounded shadow-lg sticky top-0 z-10">
+      <nav className="bg-[#ffffff] border-gray-200 px-2 sm:px-4 rounded shadow-md sticky top-0 z-10">
         <div className="container flex flex-wrap items-center justify-between">
           <a href="#" className="md:ml-12 flex items-center">
             <img src={logo} className="h-12 mr-3 sm:h-9" alt="logo" />

@@ -25,31 +25,6 @@ const createTour = async (req, resp) => {
     }
 }
 
-//update tours
-const updateTour = async (req, resp) => {
-    const id = req.params.id;
-    try {
-        const updatedTour = await Tour.findByIdAndUpdate(id, {
-            $set: req.body
-        }, { new: true });
-        resp
-            .status(200)
-            .json({
-                success: true,
-                message: 'successfully updated',
-                data: updatedTour,
-            });
-    }
-    catch (err) {
-        resp
-            .status(500)
-            .json({
-                success: false,
-                message: 'Failed to update.Try again'
-            });
-    }
-}
-
 //delete tours
 const deleteTour = async (req, resp) => {
     const id = req.params.id;
@@ -77,7 +52,7 @@ const deleteTour = async (req, resp) => {
 const getSingleTour = async (req, resp) => {
     const id = req.params.id;
     try {
-        const tour = await Tour.findById(id).populate("reviews");
+        const tour = await Tour.findById(id);
         resp
             .status(200)
             .json({
@@ -98,10 +73,8 @@ const getSingleTour = async (req, resp) => {
 
 //getall tours
 const getAllTours = async (req, resp) => {
-   // const page = parseInt(req.query.page);
-   // console.log(page);
     try {
-        const tours = await Tour.find({});
+        const tours = await Tour.find();
         resp
             .status(200)
             .json({
@@ -176,13 +149,5 @@ const getFeaturedTours=async(req,resp)=>{
             });
     }
 }
-const getTourCount=async(req,resp)=>{
-    try {
-        const tourCount=await Tour.estimatedDocumentCount();
-        resp.status(200).json({success:true,message:'Successfully retrieved',data:tourCount});
-    }catch(err){
-        resp.status(404).json({success:false,message:'Not found'});
-    }   
-};
 
-module.exports={createTour,updateTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours,getTourCount};
+module.exports={createTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours};

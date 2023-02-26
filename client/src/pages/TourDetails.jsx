@@ -1,13 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import tours from "../assets/data/tours";
+//import tours from "../assets/data/tours";
 import avatar from "../assets/images/avatar.jpg";
 import Bookings from "../components/Bookings";
+import useFetch from '../hooks/useFetch';
 
-const TourDetails = () => {
+const TourDetails = (tour) => {
   const { id } = useParams();
-  const tour = tours.find((tour) => tour.id === id);
-
+  console.log(id);
+  const {data:featuredTours}=useFetch('http://localhost:8080/api/v1/tours/search/getFeaturedTours');
+  console.log(featuredTours);
+  //console.log(id);
+  const tourDetails = featuredTours.find((featuredTours) => featuredTours._id ===id);
+  //console.log(tourDetails);
   const {
     photo,
     title,
@@ -19,8 +24,8 @@ const TourDetails = () => {
     maxGroupSize,
     featured,
     address,
-  } = tour;
-
+  } = tourDetails;
+  
   const totalRating = reviews.reduce((acc, item) => acc + item.rating, 0);
   const avgRating =
     totalRating === 0

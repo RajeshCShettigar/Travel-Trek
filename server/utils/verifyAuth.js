@@ -26,15 +26,4 @@ const verifyUser=(req,resp,next)=>{
     });
 };
 
-const verifyAdmin=(req,resp,next)=>{
-    verifyToken(req,resp,next,()=>{
-      if(req.user.id===req.params.id || req.user.role==="admin"){
-        next();
-    }else{
-       return resp.status(401)
-        .json({success:false,message:"Unauthorized"});
-    }
-    });
-};
-
-module.exports={verifyToken,verifyUser,verifyAdmin};
+module.exports={verifyToken,verifyUser};
