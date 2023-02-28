@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
    }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use('/tours',tourRouter);
 app.use('/auth',authRouter);
 app.use('/review',reviewsRouter);

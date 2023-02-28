@@ -7,7 +7,7 @@ const router=express.Router();
 router.get("/:id",getSingleTour);
 
 //get all tours
-router.get('/getAllTours',getAllTours);
+router.get("/getAllTours",getAllTours);
 
 //get tours by city,maxdistance
 router.get("/getTourBySearch",getTourBySearch);
