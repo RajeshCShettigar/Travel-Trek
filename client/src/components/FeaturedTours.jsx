@@ -4,13 +4,13 @@ import useFetch from '../hooks/useFetch';
 
 const FeaturedTours = () => {
 
-  const {data:featuredTours}=useFetch('http://localhost:8080/api/v1/tours/search/getFeaturedTours');
-  //console.log(featuredTours);
+  const {data:Tours}=useFetch('http://localhost:8000/tours/getAllTours');
+  console.log(Tours);
   return (
     <>
     <div className="flex flex-wrap justify-center">
       {
-      featuredTours.map(tour =>(
+      Tours?.map(tour =>(
         <div className="pb-3 p-1 object-cover" key={tour._id}>
           <TourCard tour={tour}/>
         </div>

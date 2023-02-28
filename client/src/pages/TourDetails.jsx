@@ -8,11 +8,11 @@ import useFetch from '../hooks/useFetch';
 const TourDetails = (tour) => {
   const { id } = useParams();
   console.log(id);
-  const {data:featuredTours}=useFetch('http://localhost:8080/api/v1/tours/search/getFeaturedTours');
-  console.log(featuredTours);
+  const {data:tourDetails}=useFetch(`http://localhost:8000/tours/${id}`);
+  //console.log(featuredTours);
   //console.log(id);
-  const tourDetails = featuredTours.find((featuredTours) => featuredTours._id ===id);
-  //console.log(tourDetails);
+  //const tourDetails = featuredTours.find((featuredTours) => featuredTours._id ===id);
+  console.log(tourDetails);
   const {
     photo,
     title,
@@ -26,7 +26,7 @@ const TourDetails = (tour) => {
     address,
   } = tourDetails;
   
-  const totalRating = reviews.reduce((acc, item) => acc + item.rating, 0);
+  const totalRating =0;
   const avgRating =
     totalRating === 0
       ? ""
@@ -47,15 +47,19 @@ const TourDetails = (tour) => {
     alert(reviewText);
     alert(rating);
     alert(time);
+    
   }
   return (
     <div className="md:ml-6 md:mr-6 m-2 shadow-2xl flex md:flex-row">
       <div className="bg-white shadow-lg overflow-hidden w-2/3">
+        <div className="relative">
         <img
           className="h-96 object-cover object-center w-full"
           src={photo}
           alt="Tour Image"
         />
+        {featured &&<span className="absolute bg-yellow-300 bottom-0 right-0 p-1 rounded-sm">Featured</span>}
+        </div>
         <div className="p-4 m-6">
           <div className="flex items-center justify-between mb-4 mr-6">
             <h2 className="font-bold text-xl mb-2">{title}</h2>
@@ -122,7 +126,7 @@ const TourDetails = (tour) => {
               </div>
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
-              {reviews.map((review) => {
+              {reviews?.map((review) => {
                 return (
                   <div className="mt-3 shadow-md flex flex-wrap flex-col p-3"key={review.id}>
                     <div className="flex items-center flex-row mr-4">

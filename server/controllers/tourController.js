@@ -1,53 +1,5 @@
 const Tour = require('../models/toursModel');
 
-//create tours
-const createTour = async (req, resp) => {
-    const newTour = new Tour(req.body);
-    try {
-        const savedTour = await newTour.save(req.body);
-        resp
-            .status(200)
-            .json({
-                success: true,
-                count:tours.length,
-                message: 'Successfully created',
-                data: savedTour
-            });
-    } catch (err) {
-        console.log(err);
-        resp
-            .status(500)
-            .json({
-                success: false,
-                message: 'Failed to create.Try again',
-                error: err
-            });
-    }
-}
-
-//delete tours
-const deleteTour = async (req, resp) => {
-    const id = req.params.id;
-    try {
-        const updatedTour = await Tour.findByIdAndDelete(id);
-        resp
-            .status(200)
-            .json({
-                success: true,
-                message: 'successfully deleted',
-                data: updatedTour,
-            });
-    }
-    catch (err) {
-        resp
-            .status(500)
-            .json({
-                success: false,
-                message: 'Failed to delete.Try again'
-            });
-    }
-}
-
 //get single tour
 const getSingleTour = async (req, resp) => {
     const id = req.params.id;
@@ -89,7 +41,7 @@ const getAllTours = async (req, resp) => {
             .status(404)
             .json({
                 success: false,
-                message: 'Not found'
+                message: 'Not found fuck off express'
             });
     }
 }
@@ -126,28 +78,4 @@ const getTourBySearch = async (req, resp) => {
     }
 }
 
-const getFeaturedTours=async(req,resp)=>{
-    try {
-        const tours = await Tour.find({
-            "featured":true
-        });
-        resp
-            .status(200)
-            .json({
-                success: true,
-                count: tours.length,
-                message: 'Successfully retrieved',
-                data: tours
-            });
-    }
-    catch (err) {
-        resp
-            .status(404)
-            .json({
-                success: false,
-                message: 'Not found'
-            });
-    }
-}
-
-module.exports={createTour,deleteTour,getSingleTour,getAllTours,getTourBySearch,getFeaturedTours};
+module.exports={getSingleTour,getAllTours,getTourBySearch};
