@@ -37,6 +37,7 @@ const getAllTours = async (req, resp) => {
             });
     }
     catch (err) {
+        console.log(err);
         resp
             .status(404)
             .json({

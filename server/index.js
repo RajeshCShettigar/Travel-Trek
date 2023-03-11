@@ -25,6 +25,14 @@ app.use(bodyParser.urlencoded({
    }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    next();
+  });
 //app.use(cors(corsOptions));
 app.use('/tours',tourRouter);
 app.use('/auth',authRouter);

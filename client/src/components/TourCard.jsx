@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const TourCard = ({ tour }) => {
+const TourCard = ( {tour }) => {
   const {_id, title,city, photo, price, featured,reviews } = tour;
 
   const totalRating = reviews.reduce((acc,item)=>acc+item.rating,0);
