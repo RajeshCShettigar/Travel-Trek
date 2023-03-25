@@ -9,11 +9,12 @@ const TourDetails = (tour) => {
   //const [tourDetails,settourDetails]=useState({});
 
   const { data: tourDetails } = useFetch(`http://localhost:9000/tours/${id}`);
-  console.log(tourDetails);
+
+  const {data:tourReviews}=useFetch(`http://localhost:9000/reviews/${id}`); 
+  //console.log(tourDetails);
+  //console.log(tourReviews);
   const [tourRating,setTourRating]=useState(null);
   //console.log(id);
-  //const tourDetails = featuredTours.find((featuredTours) => featuredTours._id ===id);
-  console.log(tourDetails);
   const {
     photo,
     title,
@@ -141,7 +142,7 @@ const TourDetails = (tour) => {
               </div>
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
-              {reviews?.map((review) => {
+              {tourReviews?.map((review) => {
                 return (
                   <div
                     className="mt-3 shadow-md flex flex-wrap flex-col p-3"

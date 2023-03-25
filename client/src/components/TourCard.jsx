@@ -16,6 +16,9 @@ const TourCard = ( {tour }) => {
         {featured &&<span className="absolute bg-yellow-300 bottom-0 right-0 p-1 rounded-sm">Featured</span>}
         </div>
         <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2 text-left">
+            <h5><Link to={`/tours/${_id}`}>{title}</Link></h5>
+          </div>
         <div className="flex flex-row justify-between">
          <div className="text-center">
           <span className=""><i className="ri-map-pin-line"></i>{city}</span>
@@ -23,9 +26,6 @@ const TourCard = ( {tour }) => {
          <div className="text-center text-yellow-300 bg-gray-100">
           <span className=""><i className="ri-star-line"></i>{avgRating===0?null:avgRating}{totalRating===0?"Not Rated":(<span>({reviews.length})</span>)}</span>
           </div>
-          </div>
-          <div className="font-bold text-xl mb-2">
-            <h5><Link to={`/tours/${_id}`}>{title}</Link></h5>
           </div>
           <div className="flex flex-row justify-between">
           <h5 className="text-gray-700 text-base">

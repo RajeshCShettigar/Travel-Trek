@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import TourDetails from './pages/TourDetails';
 import SearchResult from './components/SearchResult';
+import Payment from './components/Payments';
 import { Navigate } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 
@@ -21,7 +22,7 @@ function App() {
           <Route path="/" element={<Navigate to="/home"/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/tours/:id" element={<TourDetails/>}/>
-          <Route path="/payment" element={<h1>Payment</h1>}/>
+          <Route path="/payment" element={<Payment/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="tours/search" element={<SearchResult/>}/>

@@ -1,8 +1,10 @@
 const express=require("express");
-const {createReview}=require("../controllers/reviewController");
-const {verifyUser}=require("../utils/verifyAuth");
+const {createReview,getReviews}=require("../controllers/reviewController");
+//const {verifyUser}=require("../utils/verifyAuth");
 const router=express.Router();
 
-router.post("/:tourid",verifyUser,createReview);
+router.get('/:tourid',getReviews);
+
+router.post("/:tourid",createReview);
 
 module.exports=router;

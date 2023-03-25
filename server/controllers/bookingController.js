@@ -32,21 +32,4 @@ const getBooking=async(req,resp)=>{
     }
 }
 
-const getAllBooking=async(req,resp)=>{
-    try{
-        const books=await booking.find();
-        resp.status(200).json({
-            success:true,
-            message:"success",
-            data:books,
-        });
-    }catch(err){
-        resp.status(500)
-        .json({
-            success:false,
-            message:"failed to get booking",
-        });
-    }
-}
-
-module.exports={createBooking,getBooking,getAllBooking};
+module.exports={createBooking,getBooking};

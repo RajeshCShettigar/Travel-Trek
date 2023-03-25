@@ -29,22 +29,20 @@ const Login = () => {
       });
 
       const result=await res.json();
-      console.log(result);
+      //console.log(result);
       if(!res.ok)
          alert(result.message);
       
       dispatch({type:'LOGIN_SUCCESS',payload:result.data});
       console.log(res.data);
-      alert("Hell");
       navigate('/home');
-
     }catch(err){
       dispatch({type:'LOGIN_FAILURE',payload:err.message});
-      alert(err.message);
+      //alert(err.message);
     }
   }
   return (
-    <section className="bg-gray-100">
+    <section className="bg-login bg-cover w-full h-full">
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         
         <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">
@@ -52,7 +50,7 @@ const Login = () => {
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Sign in to your account
                 </h1>
-                <form className="space-y-4 md:space-y-6" onSubmit={(e)=>handleSubmit}>
+                <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
                         <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="name@company.com" required=""onChange={handleChange}/>
@@ -73,4 +71,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

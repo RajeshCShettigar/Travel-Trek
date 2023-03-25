@@ -1,29 +1,9 @@
-import React from 'react'
-import TourCard from './TourCard'
-import { useState,useEffect } from "react";
-import axios from 'axios';
+import React from 'react';
+import TourCard from './TourCard';
 import useFetch from '../hooks/useFetch';
 
 const FeaturedTours = () => {
   
-  //const [TourData,setTourData]=useState([]);
-  /*
-  const TourDetails=async()=>{
-    try{
-        const Data=await axios.get(
-         "http://localhost:9000/tours/getAllTours"
-        );
-        console.log(Data);
-       setTourData(Data.data.data)
-    }catch(e){
-        console.log(e);
-        alert("failed to fetch");
-    }
-  };  
-  useEffect(()=>{
-    TourDetails();
-  },[]);
-  */
    const {data:TourData}=useFetch("http://localhost:9000/tours/getAllTours");
   //console.log(TourData);
 

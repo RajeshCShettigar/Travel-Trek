@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
 //app.use(cors(corsOptions));
 app.use('/tours',tourRouter);
 app.use('/auth',authRouter);
-app.use('/review',reviewsRouter);
+app.use('/reviews',reviewsRouter);
 app.use('/booking',bookingRouter);
 
 app.listen(PORT,()=>{

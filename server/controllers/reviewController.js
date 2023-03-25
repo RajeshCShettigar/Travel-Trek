@@ -17,4 +17,17 @@ const createReview=async(req,resp)=>{
     }
 };
 
-module.exports={createReview};
+const getReviews=async(req,resp)=>{
+    const tourId=req.params.id;
+    try{
+        const tourreviews=await review.find(tourId);
+        console.log("reviews",tourreviews);
+        resp.status(200).
+        json({success:true,message:"Reviews fetched",data:tourreviews});
+    }catch(err){
+        resp.status(500).
+        json({success:false,message:"failed to get reviews",error:err});
+    }
+
+}
+module.exports={createReview,getReviews};
