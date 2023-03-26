@@ -22,7 +22,7 @@ const Bookings = ({ price }) => {
   const handleSubmit = (e) => {
        e.preventDefault();
        console.log(credentials);
-       navigate('/thankyou',{state:credentials});
+       navigate('/payment',{state:credentials});
   }
   const total = Number(price)*Number(credentials.guestSize)+Number(servicecharge);
 

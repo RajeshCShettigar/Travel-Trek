@@ -7,17 +7,17 @@ const register=async(req,resp)=>{
        const salt=bcrypt.genSaltSync(10);
        const hash=bcrypt.hashSync(req.body.password,salt); 
        const newUser=new User({
-        username:req.body.userName,
+        username:req.body.username,
         email:req.body.email,
         password:hash,
         photo:req.body.photo
       });
       await newUser.save();
 
-      resp.status(200)
+     resp.status(200)
       .json({success:true,message:"User registered successfully",user:newUser});
     }catch(err){
-      resp.status(500)
+     resp.status(500)
       .json({success:false,message:"Error occured while registering user",error:err});
     }
 };
@@ -27,12 +27,12 @@ const login=async(req,resp)=>{
     try{ 
      const user=await User.findOne({email});
      if(!user){
-       resp.status(404)
+     resp.status(404)
        .json({success:false,message:"User not found"});
      }
      const checkPassword=await bcrypt.compare(req.body.password,user.password);
      if(!checkPassword){
-       return resp.status(401)
+       resp.status(401)
        .json({success:false,message:"Incorrect email or password"});
      }
      const {password,role,...rest}=user._doc;
@@ -44,7 +44,7 @@ const login=async(req,resp)=>{
      }).status(200)
      .json({token,success:true,message:"User logged in successfully",data:{...rest},role});
     }catch(err){
-      resp.status(500)
+    resp.status(500)
       .json({success:false,message:"Failed to login",error:err});
     }
 };

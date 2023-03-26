@@ -1,27 +1,47 @@
-import React, { useState,useContext } from "react";
-import { Link ,useNavigate} from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
-  const navigate=useNavigate();
-  
-  const {user,dispatch}=useContext(AuthContext);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogout=()=>{
-    dispatch({type:"LOGOUT"});
+  const navigate = useNavigate();
+
+  const { user, dispatch } = useContext(AuthContext);
+  //console.log(user);
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = JSON.parse(localStorage.getItem("token"));
+      try {
+        const res = await axios.post("http://localhost:9000/verifyToken", {
+          token: token,
+        });
+        if (res.status === 200) {
+          setIsAuthenticated(true);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    checkAuth();
+  }, []);
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
     navigate("/");
-  }
-  
+  };
+
   return (
     <>
       <nav className="bg-[#ffffff] border-gray-200 px-2 sm:px-4 rounded shadow-md sticky top-0 z-10">
         <div className="container flex flex-wrap items-center justify-between">
           <a href="#" className="md:ml-12 flex items-center">
             <img src={logo} className="h-12 mr-3 sm:h-9" alt="logo" />
-
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -62,22 +82,47 @@ const Header = () => {
                   <i className="ri-home-4-line"></i>Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/login"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600 md:border-1 md:rounded-full md:p-2 md:px-4"
-                >
-                  <i className="ri-login-box-line"></i>Login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/register"
-                  className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600  md:border-1 md:rounded-full md:p-2 md:px-2"
-                >
-                 <i className="ri-login-box-fill"></i> Register
-                </Link>
-              </li>
+
+              {isAuthenticated ? (
+                <>
+                  <li>
+                    <Link
+                      to="/"
+                      className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600  md:border-1 md:rounded-full md:p-2 md:px-2"
+                    >
+                      <i class="ri-user-2-fill"></i>
+                      {user.username}
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="block py-2 pl-3 pr-4 rounded bg-pink-600 hover:border-pink-600 md:border-0 hover:text-pink-600 hover:bg-transparent md:border-1 md:rounded-full md:p-2 md:px-4"
+                    >
+                     Logout <i class="ri-logout-circle-r-line"></i>
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      to="/login"
+                      className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600 md:border-1 md:rounded-full md:p-2 md:px-4"
+                    >
+                      <i className="ri-login-box-line"></i>Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/register"
+                      className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600  md:border-1 md:rounded-full md:p-2 md:px-2"
+                    >
+                      <i className="ri-login-box-fill"></i>Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
