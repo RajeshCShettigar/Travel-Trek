@@ -18,7 +18,8 @@ const createReview=async(req,resp)=>{
 };
 
 const getReviews=async(req,resp)=>{
-    const tourId=req.params.id;
+    const tourId=JSON.parse(req.params.tourid);
+    console.log(typeof(tourId));
     try{
         const tourreviews=await review.find(tourId);
         console.log("reviews",tourreviews);
@@ -27,6 +28,7 @@ const getReviews=async(req,resp)=>{
     }catch(err){
         resp.status(500).
         json({success:false,message:"failed to get reviews",error:err});
+        console.log(err);
     }
 
 }

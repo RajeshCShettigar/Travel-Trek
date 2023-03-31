@@ -1,20 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 import avatar from "../assets/images/avatar.jpg";
 import Bookings from "../components/Bookings";
 import useFetch from "../hooks/useFetch";
+import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
 
 const TourDetails = (tour) => {
   const { id } = useParams();
-  //const [tourDetails,settourDetails]=useState({});
+  //console.log(id);
+  const {currentUser}=useContext(AuthContext)
+  
+  const [err, setError] = useState("");
 
   const { data: tourDetails } = useFetch(`http://localhost:9000/tours/${id}`);
 
   const {data:tourReviews}=useFetch(`http://localhost:9000/reviews/${id}`); 
-  //console.log(tourDetails);
-  //console.log(tourReviews);
+  
   const [tourRating,setTourRating]=useState(null);
-  //console.log(id);
+  
   const {
     photo,
     title,
@@ -40,14 +44,21 @@ const TourDetails = (tour) => {
 
   const reviewMsgRef = useRef("");
  
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    if(currentUser.data.username!==null){
     const reviewText = reviewMsgRef.current.value;
     const rating = tourRating;
     const time = new Date().toLocaleDateString("en-US", options);
-    alert(reviewText);
-    alert(rating);
-    alert(time);
+    const username = currentUser.data.username;
+    await axios.post(`http://localhost:9000/reviews/${id}`,{username,reviewText,rating,time},{
+      headers:{
+        "Content-Type":"application/json"
+      } 
+    });
+    }else{
+      setError("Please Login to post a review")
+    }
   };
 
   return (
@@ -94,7 +105,7 @@ const TourDetails = (tour) => {
             </div>
             <div className="p-2">
               <i className="ri-map-pin-user-fill"></i>
-              {distance} k/m
+              {distance} km
             </div>
           </div>
           <div className="flex flex-col flex-wrap justify-between pb-4">
@@ -139,10 +150,12 @@ const TourDetails = (tour) => {
                 >
                   Share
                 </button>
+                {err && <p className="text-red-500 p-2">{err}</p>}
               </div>
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
-              {tourReviews?.map((review) => {
+              {
+              tourReviews?.map((review) => {
                 return (
                   <div
                     className="mt-3 shadow-md flex flex-wrap flex-col p-3"
@@ -157,7 +170,7 @@ const TourDetails = (tour) => {
                         />
                       </div>
                       <div className="text-sm font-medium text-gray-900 mr-5">
-                        {review.name}
+                        {review.username}
                       </div>
                       <div className="text-sm text-gray-500 mr-5">
                         {new Date(review.createdAt).toLocaleDateString(

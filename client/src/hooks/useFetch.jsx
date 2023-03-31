@@ -14,7 +14,7 @@ const useFetch=(url)=>{
                 
                 if(!res.ok){
                     setError('Failed to fetch');
-                    alert(error);
+                    //alert(error);
                 }
                 const result=await res.json();
                 setLoading(false);

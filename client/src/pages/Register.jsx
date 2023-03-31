@@ -29,7 +29,6 @@ const Register = () => {
       .then((res) => {
         const result = res.data;
         if (res.status === 200) {
-          dispatch({ type: "REGISTER_SUCCESS", payload: result.data });
           navigate("/login");
         } else {
           alert("Registration failed");

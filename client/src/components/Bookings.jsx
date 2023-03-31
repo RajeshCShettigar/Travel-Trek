@@ -1,11 +1,16 @@
-import React, { useState} from "react";
+import React, { useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Bookings = ({ price }) => {
   const servicecharge=10
+  
+  const {currentUser}=useContext(AuthContext);
+
+  const userEmail=currentUser?.data.userEmail;
+
   const [credentials, setCredentials] = useState({
     id: "",
-    userEmail: "raj@gmail.com",
     fullname: "",
     phoneno: "",
     bookAt: "",
@@ -21,7 +26,7 @@ const Bookings = ({ price }) => {
 
   const handleSubmit = (e) => {
        e.preventDefault();
-       console.log(credentials);
+       console.log(JSON.parse(credentials));
        navigate('/payment',{state:credentials});
   }
   const total = Number(price)*Number(credentials.guestSize)+Number(servicecharge);
@@ -42,7 +47,7 @@ const Bookings = ({ price }) => {
             placeholder=" "
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             required
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)} value={credentials.fullname}
           />
           <label
             htmlFor="fullname"
@@ -57,9 +62,9 @@ const Bookings = ({ price }) => {
             name="phoneno"
             id="phoneno"
             placeholder=" "
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             required
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)} value={credentials.phoneno} 
           />
           <label
             htmlFor="phoneno"
@@ -78,6 +83,7 @@ const Bookings = ({ price }) => {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              onChange={(e) => handleChange(e)} value={credentials.bookAt}
             />
             <label
               htmlFor="floating_phone"
@@ -94,6 +100,7 @@ const Bookings = ({ price }) => {
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
+              onChange={(e) => handleChange(e)} value={credentials.guestSize}
             />
             <label
               htmlFor="guestSize"

@@ -1,40 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+   
+   const {currentUser,logout}=useContext(AuthContext);
 
-  const navigate = useNavigate();
-
-  const { user, dispatch } = useContext(AuthContext);
-  //console.log(user);
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = JSON.parse(localStorage.getItem("token"));
-      try {
-        const res = await axios.post("http://localhost:9000/verifyToken", {
-          token: token,
-        });
-        if (res.status === 200) {
-          setIsAuthenticated(true);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    checkAuth();
-  }, []);
-
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-    navigate("/");
-  };
 
   return (
     <>
@@ -83,23 +57,23 @@ const Header = () => {
                 </Link>
               </li>
 
-              {isAuthenticated ? (
+              {currentUser? (
                 <>
                   <li>
                     <Link
                       to="/"
                       className="block py-2 pl-3 pr-4  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-600  md:border-1 md:rounded-full md:p-2 md:px-2"
                     >
-                      <i class="ri-user-2-fill"></i>
-                      {user.username}
+                      <i className="ri-user-2-fill"></i>
+                      {currentUser.data.username}
                     </Link>
                   </li>
                   <li>
                     <button
-                      onClick={handleLogout}
+                      onClick={logout}
                       className="block py-2 pl-3 pr-4 rounded bg-pink-600 hover:border-pink-600 md:border-0 hover:text-pink-600 hover:bg-transparent md:border-1 md:rounded-full md:p-2 md:px-4"
                     >
-                     Logout <i class="ri-logout-circle-r-line"></i>
+                     Logout <i className="ri-logout-circle-r-line"></i>
                     </button>
                   </li>
                 </>

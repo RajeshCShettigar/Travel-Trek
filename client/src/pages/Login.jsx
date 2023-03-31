@@ -9,40 +9,24 @@ const Login = () => {
     email: "",
     password: ""
    });
- 
+   const [err, setError] = useState(null);
   const handleChange = (e) => {
   const newdata = {...data };
   newdata[e.target.id] = e.target.value;
   setData(newdata);
   }
 
-  const { dispatch } = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    await axios.post("http://localhost:9000/auth/login",data,{
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then((res) => {
-        const result = res.data;
-        if(res.status===200){
-        dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
-        //console.log(res);
-        localStorage.setItem("token", JSON.stringify(result.token));
-        navigate("/");
-        location.reload();
-        }else{
-          alert("Invalid username or password");
-        }
-      })
-      .catch((err) => {
-        dispatch({ type: "LOGIN_FAILURE", payload: err.message });
-        alert("login failed");
-      });
+    try{
+    await login(data);
+    navigate("/");
+    }catch(err){
+      setError(err.response.data);
+    }
   };
   return (
     <section className="bg-login bg-cover w-full h-full">
@@ -93,6 +77,7 @@ const Login = () => {
               >
                 Sign In
               </button>
+              {err && <p className="text-red-500">{err}</p>}
             </form>
             <p className="text-sm font-light text-gray-900 bg-gray-100">
                 Don’t have an account yet?
