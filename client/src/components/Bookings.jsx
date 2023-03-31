@@ -1,6 +1,7 @@
 import React, { useState,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import GooglePayButton from '@google-pay/button-react';
 
 const Bookings = ({ price }) => {
   const servicecharge=10
@@ -8,6 +9,8 @@ const Bookings = ({ price }) => {
   const {currentUser}=useContext(AuthContext);
 
   const userEmail=currentUser?.data.userEmail;
+
+  const [isPaid, setIsPaid] = useState(false);
 
   const [credentials, setCredentials] = useState({
     id: "",
@@ -26,10 +29,50 @@ const Bookings = ({ price }) => {
 
   const handleSubmit = (e) => {
        e.preventDefault();
-       console.log(JSON.parse(credentials));
+       //console.log(JSON.parse(credentials));
        navigate('/payment',{state:credentials});
   }
+
   const total = Number(price)*Number(credentials.guestSize)+Number(servicecharge);
+   
+  // GPay payment options
+  const paymentRequest = {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY','CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA']
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId'
+          }
+        }
+      }
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Example Merchant'
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total',
+      totalPrice: total,
+      currencyCode: 'INR',
+      countryCode: 'IN'
+    },
+    
+  };
+
+  const onPaymentSuccess = () => {
+    setIsPaid(true);
+    handleSubmit();
+  };
 
     return (
     <div className="shadow-md p-4 w-full h-full">
@@ -114,11 +157,27 @@ const Bookings = ({ price }) => {
           <h5 className="p-2">Service Charges :${servicecharge}</h5>
           <h5 className="p-2">Total Price :${total}</h5>
         </div>
-        <button
-          type="submit"
-          className="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">
-          Submit
-        </button>
+        <button type="submit">
+        <GooglePayButton
+          environment="TEST"
+          paymentRequest={paymentRequest}
+          buttonType="pay"
+          onLoadPaymentData={() => {
+            console.log('Payment data loaded');
+          }}
+          onPaymentAuthorized={(paymentData) => {
+            console.log('Payment authorized:', paymentData);
+            onPaymentSuccess();
+          }}
+          onPaymentDataChanged={(paymentData) => {
+            console.log('Payment data changed:', paymentData);
+          }}
+          onError={(error) => {
+            console.error('Payment error:', error);
+          }
+        }
+          />
+          </button>
       </form>
     </div>
   );

@@ -19,6 +19,7 @@ const TourDetails = (tour) => {
   
   const [tourRating,setTourRating]=useState(null);
   
+  //console.log(tourReviews);
   const {
     photo,
     title,
