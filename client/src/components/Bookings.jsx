@@ -11,10 +11,13 @@ const Bookings = ({ price }) => {
   const userEmail=currentUser?.data.userEmail;
 
   const [isPaid, setIsPaid] = useState(false);
+  
+  const [error,setError]=useState(false);
 
   const [credentials, setCredentials] = useState({
     id: "",
     fullname: "",
+    email: userEmail,
     phoneno: "",
     bookAt: "",
     guestSize: 1,
@@ -24,13 +27,18 @@ const Bookings = ({ price }) => {
   
   const handleChange = (e) => {
     setCredentials(prev=>({...prev,[e.target.id]:e.target.value}));
-    console.log(credentials);
+    //console.log(credentials);
   };
 
   const handleSubmit = (e) => {
        e.preventDefault();
        //console.log(JSON.parse(credentials));
+       if(isPaid===true){
        navigate('/payment',{state:credentials});
+       }
+       else{
+       setError(true);
+       }
   }
 
   const total = Number(price)*Number(credentials.guestSize)+Number(servicecharge);
@@ -44,34 +52,28 @@ const Bookings = ({ price }) => {
         type: 'CARD',
         parameters: {
           allowedAuthMethods: ['PAN_ONLY','CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['MASTERCARD', 'VISA']
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
         },
         tokenizationSpecification: {
           type: 'PAYMENT_GATEWAY',
           parameters: {
             gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId'
+            gatewayMerchantId: 'exampleGatewayMerchantId',
           }
         }
       }
     ],
     merchantInfo: {
       merchantId: '12345678901234567890',
-      merchantName: 'Example Merchant'
+      merchantName: 'Demo Merchant',
     },
     transactionInfo: {
       totalPriceStatus: 'FINAL',
       totalPriceLabel: 'Total',
-      totalPrice: total,
-      currencyCode: 'INR',
-      countryCode: 'IN'
+      totalPrice: "100",
+      currencyCode: 'USD',
+      countryCode: 'US',
     },
-    
-  };
-
-  const onPaymentSuccess = () => {
-    setIsPaid(true);
-    handleSubmit();
   };
 
     return (
@@ -157,27 +159,31 @@ const Bookings = ({ price }) => {
           <h5 className="p-2">Service Charges :${servicecharge}</h5>
           <h5 className="p-2">Total Price :${total}</h5>
         </div>
-        <button type="submit">
+        <div className="className"></div>
+        <div className="flex justify-center items-start p-2">
+        <div>
         <GooglePayButton
           environment="TEST"
           paymentRequest={paymentRequest}
           buttonType="pay"
           onLoadPaymentData={() => {
             console.log('Payment data loaded');
+            setIsPaid(true);
           }}
-          onPaymentAuthorized={(paymentData) => {
-            console.log('Payment authorized:', paymentData);
-            onPaymentSuccess();
-          }}
-          onPaymentDataChanged={(paymentData) => {
-            console.log('Payment data changed:', paymentData);
-          }}
-          onError={(error) => {
-            console.error('Payment error:', error);
-          }
+         existingPaymentMethodRequired="false"
+         ></GooglePayButton>
+          </div>
+          <div>
+          <button
+          type="submit"
+          className="text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-4">
+          Submit
+        </button>
+        </div>
+        </div>
+        {
+          error && <p className="text-center text-red-600">Please complete payment !!</p>
         }
-          />
-          </button>
       </form>
     </div>
   );

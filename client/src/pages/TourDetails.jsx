@@ -86,7 +86,7 @@ const TourDetails = (tour) => {
               {totalRating === 0 ? (
                 "Not Rated"
               ) : (
-                <span>({reviews.length})</span>
+                <span>({tourReviews.length})</span>
               )}
             </span>
           </div>
@@ -110,7 +110,7 @@ const TourDetails = (tour) => {
             </div>
           </div>
           <div className="flex flex-col flex-wrap justify-between pb-4">
-            <h3>Reviews ({reviews?.length} reviews)</h3>
+            <h3>Reviews ({tourReviews.length})</h3>
             <form onSubmit={handleSubmit}>
               <div className="flex border-pink-200 shadow-sm rounded-lg ">
                 <div className="relative z-0 w-full mb-2 group mt-2">
@@ -147,7 +147,7 @@ const TourDetails = (tour) => {
                 </div>
                 <button
                   type="submit"
-                  className="btn bg-teal-400 rounded-full ml-4 pl-2 pr-2"
+                  className="btn bg-teal-400 rounded-md ml-4 pl-3 pr-3 my-1"
                 >
                   Share
                 </button>
@@ -156,24 +156,22 @@ const TourDetails = (tour) => {
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
               {
-              tourReviews?.map((review) => {
-                return (
+             tourReviews?.map((review) => {
+                  return(
                   <div
-                    className="mt-3 shadow-md flex flex-wrap flex-col p-3"
-                    key={review.id}
-                  >
+                    className="mt-3 shadow-md flex flex-wrap flex-col p-3" key={review._id}>
                     <div className="flex items-center flex-row mr-4">
                       <div className="flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
                           src={avatar}
-                          alt="Reviewer Image"
+                          alt="Reviewer Image" 
                         />
                       </div>
                       <div className="text-sm font-medium text-gray-900 mr-5">
                         {review.username}
                       </div>
-                      <div className="text-sm text-gray-500 mr-5">
+                      <div className="text-sm text-gray-500 mr-5" >
                         {new Date(review.createdAt).toLocaleDateString(
                           "en-us",
                           options
@@ -188,7 +186,7 @@ const TourDetails = (tour) => {
                       <p>{review.reviewText}</p>
                     </div>
                   </div>
-                );
+                  );
               })}
             </div>
           </div>

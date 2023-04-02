@@ -11,10 +11,16 @@ export const AuthContextProvider = ({ children }) => {
   const login = async (inputs) => {
     const res = await axios.post("http://localhost:9000/auth/login", inputs,{
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       }
     });
+    console.log(res);
+    if(res.status!==200){
+    return false;
+    }
     setCurrentUser(res.data);
+    return true;
   };
 
   const logout = async (inputs) => {

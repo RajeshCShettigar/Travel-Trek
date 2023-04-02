@@ -29,11 +29,13 @@ const login=async(req,resp)=>{
      if(!user){
      resp.status(404)
        .json({success:false,message:"User not found"});
+       return;
      }
      const checkPassword=await bcrypt.compare(req.body.password,user.password);
      if(!checkPassword){
        resp.status(401)
        .json({success:false,message:"Incorrect email or password"});
+       return;
      }
      const {password,role,...rest}=user._doc;
      const token=jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET_KEY,{expiresIn:"1d"});
@@ -43,9 +45,11 @@ const login=async(req,resp)=>{
         expires:token.expiresIn
      }).status(200)
      .json({token,success:true,message:"User logged in successfully",data:{...rest},role});
+     return;
     }catch(err){
     resp.status(500)
       .json({success:false,message:"Failed to login",error:err});
+      return;
     }
 };
 

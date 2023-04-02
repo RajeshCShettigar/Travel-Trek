@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
+//import axios from "axios";
 
 const Login = () => {
   
@@ -21,13 +21,11 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    try{
-    await login(data);
-    navigate("/");
-    }catch(err){
-      setError(err.response.data);
-    }
+    //console.log(data);
+    const res=await login(data);
+    res===true?navigate("/"):setError("User not found");
   };
+
   return (
     <section className="bg-login bg-cover w-full h-full">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

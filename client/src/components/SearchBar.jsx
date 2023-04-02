@@ -1,12 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef,useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useFetch from '../hooks/useFetch';
 
 const SearchBar = () => {
   const navigate = useNavigate();
   const locationRef = useRef("");
   const distanceRef = useRef(0);
   const maxGroupSizeRef = useRef(0);
-
+  const [error,setError]=useState(false);
   const searchHandler = async () => {
     const location = locationRef.current.value;
     const distance = distanceRef.current.value;
@@ -16,19 +17,19 @@ const SearchBar = () => {
       return alert("Please fill all the fields");
     }
     
-    const res = await fetch(
+    const res = await useFetch(
       `http://localhost:9000/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
 
     if (!res.ok) {
-      return alert("Something went wrong. Try again later");
+       setError(true);
     }
 
     const result = await res.json();
-    
+    //const {data}=result;
+    //console.log(result);
     navigate(
-      `/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
-      { state: result.data }
-    );
+      '/search',
+      {state: result});
   };
 
   return (
@@ -52,7 +53,7 @@ const SearchBar = () => {
             <input
               type="number"
               name="distance"
-              placeholder="Distance k/m"
+              placeholder="Distance in km"
               className="bg-gray-100 rounded-full"
               ref={distanceRef}
             />
@@ -78,6 +79,7 @@ const SearchBar = () => {
           </div>
         </div>
       </form>
+      {error && <p className="text-red-500 text-center">No tours found</p>}
     </div>
   );
 };
