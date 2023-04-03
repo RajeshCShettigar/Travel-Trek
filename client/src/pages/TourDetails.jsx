@@ -63,8 +63,8 @@ const TourDetails = (tour) => {
   };
 
   return (
-    <div className="md:ml-6 md:mr-6 m-2 shadow-2xl flex md:flex-row">
-      <div className="bg-white shadow-lg overflow-hidden w-2/3">
+    <div className="md:ml-6 md:mr-6 m-2 shadow-2xl flex md:flex-row flex-col font-shantell font-bold">
+      <div className="bg-white shadow-lg overflow-hidden md:w-2/3">
         <div className="relative">
           <img
             className="h-96 object-cover object-center w-full"
@@ -192,7 +192,7 @@ const TourDetails = (tour) => {
           </div>
         </div>
       </div>
-      <div className="w-1/3 ml-2">
+      <div className="md:w-1/3 md:ml-2">
         <Bookings price={price} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TourCard = ( {tour }) => {
   const {_id, title,city, photo, price, featured,reviews } = tour;
-
+  
   const totalRating = reviews.reduce((acc,item)=>acc+item.rating,0);
   const avgRating=totalRating===0?"":totalRating===1?totalRating:totalRating/reviews?.length;
   return (
@@ -31,7 +31,7 @@ const TourCard = ( {tour }) => {
           <h5 className="text-gray-700 text-base">
             ${price}<span>/per person</span>
           </h5>
-          <button className="btn bg-gray-200 p-2 rounded-full"><Link to={`/tours/${_id}`}>Book Now</Link></button>
+          <button className="btn bg-gray-200 p-1 rounded-full m-1"><Link to={`/tours/${_id}`}>Book Now</Link></button>
           </div>
         </div>
       </div>

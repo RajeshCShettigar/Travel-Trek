@@ -26,17 +26,18 @@ const SearchBar = () => {
 
     const result = await res.json();
     //const {data}=result;
-    //console.log(result);
+    console.log(result);
+    //alert(result);
     navigate(
       '/search',
       {state: result});
   };
 
   return (
-    <div className="backdrop-opacity-10 backdrop-invert bg-white/30 rounded-full items-center p-3 text-center ml-6 mr-16 text-pink-700 font-ubuntu pl-2 pr-2 shadow-xl">
+    <div className="backdrop-opacity-10 backdrop-invert bg-white/30 rounded-full items-center md:p-3 text-center ml-6 mr-16 text-pink-700 font-ubuntu pl-2 pr-2 shadow-xl flex flex-col flex-wrap font-light">
       <form>
         <div className="flex flex-row flex-wrap items-center justify-center">
-          <div className="flex flex-row mr-3 items-center pl-2">
+          <div className="flex flex-row mr-3 items-center pl-2 mt-1">
             <i className="ri-map-pin-line"></i>
             <h6>Location</h6>
             <input
@@ -47,7 +48,7 @@ const SearchBar = () => {
               ref={locationRef}
             />
           </div>
-          <div className="flex flex-row mr-3 items-center justify-center">
+          <div className="flex flex-row mr-3 items-center justify-center mt-1">
             <i className="ri-pin-distance-line"></i>
             <h6>Distance</h6>
             <input
@@ -58,7 +59,7 @@ const SearchBar = () => {
               ref={distanceRef}
             />
           </div>
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center mt-1">
             <i className="ri-group-line"></i>
             <h6>Max People</h6>
             <input

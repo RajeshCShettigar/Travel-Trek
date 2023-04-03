@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <section className="bg-login bg-cover w-full h-full">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 shadow-lg">
         <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
@@ -75,7 +75,7 @@ const Login = () => {
               >
                 Sign In
               </button>
-              {err && <p className="text-red-500">{err}</p>}
+              {err && <p className="text-red-500 p-1">{err}</p>}
             </form>
             <p className="text-sm font-light text-gray-900 bg-gray-100">
                 Don’t have an account yet?

@@ -20,7 +20,7 @@ const Home = () => {
         </div>
       </div>
       </div>
-      <div className="p-6 text-center">
+      <div className="p-6 text-center shadow-md">
         <h2 className="rounded-full text-2xl font-shantell p-6"> <span className="text-3xl font-bold text-gray-800 bg-yellow-300 rounded-full">Explore </span>Our Featured Tours</h2>
         <FeaturedTours />
       </div>

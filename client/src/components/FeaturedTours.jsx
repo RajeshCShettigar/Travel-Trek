@@ -5,8 +5,8 @@ import useFetch from '../hooks/useFetch';
 const FeaturedTours = () => {
   
    const {data:TourData}=useFetch("http://localhost:9000/tours/getAllTours");
-  //console.log(TourData);
-
+   console.log(TourData);
+      
   return (
     <>
     <div className="flex flex-wrap justify-center">
