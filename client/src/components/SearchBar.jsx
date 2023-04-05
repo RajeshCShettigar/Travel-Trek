@@ -8,29 +8,35 @@ const SearchBar = () => {
   const distanceRef = useRef(0);
   const maxGroupSizeRef = useRef(0);
   const [error,setError]=useState(false);
+  
   const searchHandler = async () => {
-    const location = locationRef.current.value;
-    const distance = distanceRef.current.value;
-    const maxGroupSize = maxGroupSizeRef.current.value;
+  const location = locationRef.current.value;
+  const distance = distanceRef.current.value;
+  const maxGroupSize = maxGroupSizeRef.current.value;
     
-    if (location === "" || distance === "" || maxGroupSize === 0) {
+  if (location === "" || distance === "" || maxGroupSize === 0) {
       return alert("Please fill all the fields");
-    }
+  }
     
-    const res = await useFetch(
+  const res = await useFetch(
       `http://localhost:9000/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
-
+   //alert(res.ok);
     if (!res.ok) {
        setError(true);
     }
-
+      
     const result = await res.json();
-    //const {data}=result;
-    console.log(result);
+    const data=result.data;
+    console.log(data);
     //alert(result);
+    if(data.length>0){
     navigate(
-      '/search',
-      {state: result});
+      `tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+      {state: data});
+    }else{
+      setError(true);
+    }
+    alert(error);
   };
 
   return (
@@ -80,7 +86,7 @@ const SearchBar = () => {
           </div>
         </div>
       </form>
-      {error && <p className="text-red-500 text-center">No tours found</p>}
+      {error && <p className="text-pink-500 text-center">No tours found</p>}
     </div>
   );
 };

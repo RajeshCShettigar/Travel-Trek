@@ -7,7 +7,7 @@ const SearchResult = () => {
   
   const data=location.state.result.data;
 
-  console.log(data);
+  //console.log(data);
 
   return (
     <div className="justify-center text-center align-items">

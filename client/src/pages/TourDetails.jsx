@@ -33,21 +33,13 @@ const TourDetails = (tour) => {
     address,
   } = tourDetails;
 
-  const totalRating = 0;
-  const avgRating =
-    totalRating === 0
-      ? ""
-      : totalRating === 1
-      ? totalRating
-      : totalRating / reviews?.length;
-
   const options = { day: "numeric", month: "long", year: "numeric" };
 
   const reviewMsgRef = useRef("");
  
   const handleSubmit = async(e) => {
     e.preventDefault();
-    if(currentUser.data.username!==null){
+    if(currentUser!==null){
     const reviewText = reviewMsgRef.current.value;
     const rating = tourRating;
     const time = new Date().toLocaleDateString("en-US", options);
@@ -58,6 +50,7 @@ const TourDetails = (tour) => {
       } 
     });
     }else{
+      //alert("Please Login to post a review");
       setError("Please Login to post a review")
     }
   };
@@ -82,11 +75,10 @@ const TourDetails = (tour) => {
             <h2 className="font-bold text-xl mb-2">{title}</h2>
             <span className="block text-amber-600 text-bold text-xl">
               <i className="ri-star-line"></i>
-              {avgRating === 0 ? null : avgRating}
-              {totalRating === 0 ? (
+              {tourReviews.length === 0 ? (
                 "Not Rated"
               ) : (
-                <span>({tourReviews.length})</span>
+                <span>({tourReviews.length}) Ratings</span>
               )}
             </span>
           </div>
@@ -128,7 +120,7 @@ const TourDetails = (tour) => {
                     Share your thoughts...
                   </label>
                 </div>
-                <div className="flex flex-row items-center ml-2 mr-2">
+                <div className="flex flex-row items-center ml-2 mr-2 text-amber-500">
                   <span onClick={() => setTourRating(1)}>
                     <i className="ri-star-line"></i>
                   </span>
@@ -144,6 +136,7 @@ const TourDetails = (tour) => {
                   <span onClick={() => setTourRating(5)}>
                     <i className="ri-star-line"></i>
                   </span>
+                  <span className="ml-1 text-amber-500">({tourRating})</span>
                 </div>
                 <button
                   type="submit"
@@ -151,8 +144,8 @@ const TourDetails = (tour) => {
                 >
                   Share
                 </button>
-                {err && <p className="text-red-500 p-2">{err}</p>}
               </div>
+              {err && <p className="text-red-500 p-2">{err}</p>}
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
               {

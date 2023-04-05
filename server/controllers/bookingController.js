@@ -12,24 +12,4 @@ const createBooking=async(req,resp)=>{
      }
 };
 
-const getBooking=async(req,resp)=>{
-    const id=req.params.id;
-    try{
-        const book=await booking.findById(id);
-        resp.status(200)
-        .json({
-            success:true,
-            message:"success",
-            data:book,
-        });
-    }catch(err){
-         resp.status(404).
-         json({
-            success:false,
-            message:"failed to get booking",
-            error:err
-        });
-    }
-}
-
-module.exports={createBooking,getBooking};
+module.exports={createBooking};
