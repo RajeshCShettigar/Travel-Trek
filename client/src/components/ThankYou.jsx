@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Payment = () => {
+const ThankYou = () => {
   
   return (
     <div class="flex items-center justify-center h-[510px]">
@@ -49,4 +49,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default ThankYou;

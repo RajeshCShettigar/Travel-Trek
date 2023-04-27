@@ -27,54 +27,28 @@ const Bookings = ({ price }) => {
   
   const handleChange = (e) => {
     setCredentials(prev=>({...prev,[e.target.id]:e.target.value}));
-    //console.log(credentials);
+    console.log(credentials);
   };
 
   const handleSubmit = (e) => {
        e.preventDefault();
-       //console.log(JSON.parse(credentials));
-       if(isPaid===true){
+       console.log(credentials);
+       navigate('/thankyou');
+       /*if(isPaid===true){
        navigate('/payment',{state:credentials});
        }
        else{
        setError(true);
-       }
+       }*/
   }
 
   const total = Number(price)*Number(credentials.guestSize)+Number(servicecharge);
    
-  // GPay payment options
-  const paymentRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [
-      {
-        type: 'CARD',
-        parameters: {
-          allowedAuthMethods: ['PAN_ONLY','CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['MASTERCARD', 'VISA'],
-        },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId',
-          }
-        }
-      }
-    ],
-    merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant',
-    },
-    transactionInfo: {
-      totalPriceStatus: 'FINAL',
-      totalPriceLabel: 'Total',
-      totalPrice: "100",
-      currencyCode: 'USD',
-      countryCode: 'US',
-    },
-  };
+  const handlePaymentAuthorized = (paymentData) => {
+    console.log('payment authorized', paymentData);
+    setIsPaid(true);
+    return { transactionState: 'SUCCESS' };
+  }
 
     return (
     <div className="shadow-md p-4 w-full h-full">
@@ -164,13 +138,45 @@ const Bookings = ({ price }) => {
         <div>
         <GooglePayButton
           environment="TEST"
-          paymentRequest={paymentRequest}
-          buttonType="pay"
-          onLoadPaymentData={() => {
-            console.log('Payment data loaded');
-            setIsPaid(true);
+          paymentRequest={{
+              apiVersion: 2,
+              apiVersionMinor: 0,
+              allowedPaymentMethods: [
+                  {
+                      type: 'CARD',
+                      parameters: {
+                          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                          allowedCardNetworks: ['MASTERCARD', 'VISA']
+                      },
+                      tokenizationSpecification: {
+                          type: 'PAYMENT_GATEWAY',
+                          parameters: {
+                              gateway: 'example',
+                              gatewayMerchantId: 'exampleGatewayMerchantId'
+                          }
+                      }
+                  }
+              ],
+              merchantInfo: {
+                  merchantId: '12345678901234567890',
+                  merchantName: 'Example Merchant'
+              },
+              transactionInfo: {
+                  totalPriceStatus: 'FINAL',
+                  totalPriceLabel: 'Total',
+                  totalPrice: '10.00',
+                  currencyCode: 'USD',
+                  countryCode: 'US'
+              }
           }}
-         existingPaymentMethodRequired="false"
+          onLoadPaymentData={paymentRequest => {
+              console.log('load payment data', paymentRequest);
+          }}
+          onPaymentAuthorized={handlePaymentAuthorized}
+          onPaymentDataChanged={paymentData => {
+              console.log('payment data changed', paymentData);
+          }}
+          existingPaymentMethodRequired='false'
          ></GooglePayButton>
           </div>
           <div>
