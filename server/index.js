@@ -38,7 +38,6 @@ app.use('/auth',authRouter);
 app.use('/reviews',reviewsRouter);
 app.use('/booking',bookingRouter);
 
-
 app.post('/verifyToken', (req, res) => {
   const token = req.body.token;
   if (token) {
@@ -58,5 +57,3 @@ app.post('/verifyToken', (req, res) => {
 app.listen(PORT,()=>{
     console.log(`Server is running at ${PORT}`);
 });
-
-

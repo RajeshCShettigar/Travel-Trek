@@ -12,7 +12,7 @@ const TourDetails = (tour) => {
   const {currentUser}=useContext(AuthContext)
   
   const [err, setError] = useState("");
-
+  const [success,setSuccess]=useState("");
   const { data: tourDetails } = useFetch(`http://localhost:9000/tours/${id}`);
 
   const {data:tourReviews}=useFetch(`http://localhost:9000/reviews/${id}`); 
@@ -49,6 +49,8 @@ const TourDetails = (tour) => {
         "Content-Type":"application/json"
       } 
     });
+    setSuccess("Reviews submitted successfully")
+    //alert("Reviews submitted successfully");
     }else{
       //alert("Please Login to post a review");
       setError("Please Login to post a review")
@@ -146,6 +148,7 @@ const TourDetails = (tour) => {
                 </button>
               </div>
               {err && <p className="text-red-500 p-2">{err}</p>}
+              {success && <p className="text-green-500 p-2">{success}</p>}
             </form>
             <div className="user-reviews container flex flex-col flex-wrap">
               {
@@ -186,7 +189,7 @@ const TourDetails = (tour) => {
         </div>
       </div>
       <div className="md:w-1/3 md:ml-2">
-        <Bookings price={price} />
+        <Bookings price={price} title={title}/>
       </div>
     </div>
   );

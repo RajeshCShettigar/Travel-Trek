@@ -2,12 +2,20 @@ const tour=require("../models/toursModel");
 const review=require("../models/reviewsModel");
 
 const createReview=async(req,resp)=>{
-    const tourId=req.params.tourId;
-    const newReview=new review({...req.body});
+    const tourId=req.params.tourid;
+    const {username,reviewText,rating}=req.body;
+    //const newReview=new review({...req.body});
+    //console.log(req.body);
     try{
+        const newReview = new review({
+            productId: tourId,
+            username: username,
+            reviewText: reviewText,
+            rating: rating,
+          });
         const savedReview=await newReview.save();
         await tour.findByIdAndUpdate(tourId,
-            {$push:{reviews:savedReview._id}
+            {$push:{reviews:savedReview.productId}
         });
         resp.status(200).
         json({success:true,message:"Review submitted",data:savedReview});
@@ -19,10 +27,10 @@ const createReview=async(req,resp)=>{
 
 const getReviews=async(req,resp)=>{
     const tourId=req.params.tourid;
-   //console.log(Object(tourId));
+    //console.log(tourId);
     try{
-        const tourreviews=await review.find({tourId});
-        console.log("reviews",tourreviews);
+        const tourreviews=await review.find({productId:tourId});
+        //console.log("reviews",tourreviews);
         resp.status(200).
         json({success:true,message:"Reviews fetched",data:tourreviews});
     }catch(err){
@@ -31,4 +39,5 @@ const getReviews=async(req,resp)=>{
         console.log(err);
     }
 }
+
 module.exports={createReview,getReviews};

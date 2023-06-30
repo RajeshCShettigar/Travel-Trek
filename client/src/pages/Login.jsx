@@ -32,7 +32,7 @@ const Login = () => {
         <div className="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-              Sign in to your account
+              Login to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -65,7 +65,8 @@ const Login = () => {
                   id="password"
                   placeholder=""
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                  pattern="^(?=.*[!@#$%^&*])(?=.*\d)(?=.*[A-Z]).+$"
+                  required 
                   onChange={(e) => handleChange(e)} value={data.password} 
                 />
               </div>
@@ -73,12 +74,12 @@ const Login = () => {
                 type="submit"
                 className="w-full bg-pink-600 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Sign In
+                Login
               </button>
               {err && <p className="text-red-500 p-1">{err}</p>}
             </form>
             <p className="text-sm font-light text-gray-900 bg-gray-100">
-                Don’t have an account yet?
+                Don't have an account yet?
                 <Link
                   to="/register"
                   className="font-medium text-pink-600 hover:underline"

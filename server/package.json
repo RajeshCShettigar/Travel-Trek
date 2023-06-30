@@ -9,7 +9,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.1",
-    "nodemon": "^2.0.20"
+    "nodemailer": "^6.9.3",
+    "nodemon": "^1.14.9"
   },
   "name": "server",
   "version": "1.0.0",

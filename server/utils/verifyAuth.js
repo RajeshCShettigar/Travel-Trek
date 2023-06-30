@@ -17,7 +17,7 @@ const verifyToken=(req,resp,next)=>{
 
 const verifyUser=(req,resp,next)=>{
     verifyToken(req,resp,next,()=>{
-        if(req.user.id===req.params.id||req.user.role=="admin"){
+        if(req.user.id===req.params.id){
             next();
         }else{
          return resp.status(401)

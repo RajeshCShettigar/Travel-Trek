@@ -4,10 +4,9 @@ import { useLocation } from 'react-router-dom';
 
 const SearchResult = () => {
   const location=useLocation();
+  const data = location.state || [];
   
-  const data=location.state.result.data;
-
-  //console.log(data);
+  console.log(data);
 
   return (
     <div className="justify-center text-center align-items">

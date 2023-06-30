@@ -12,7 +12,7 @@ const Register = () => {
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  
   const handleChange = (e) => {
     const newdata = { ...data };
     newdata[e.target.id] = e.target.value;
@@ -98,7 +98,8 @@ const Register = () => {
                   id="password"
                   placeholder=""
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                  pattern="^(?=.*[!@#$%^&*])(?=.*\d)(?=.*[A-Z]).+$"
+                  required 
                   onChange={(e) => handleChange(e)}
                   value={data.password}
                 />

@@ -37,12 +37,12 @@ const getAllTours = async (req, resp) => {
             });
     }
     catch (err) {
-        console.log(err);
+        //console.log(err);
         resp
             .status(404)
             .json({
                 success: false,
-                message: 'Not found fuck off express'
+                message: 'Not found'
             });
     }
 }
@@ -69,7 +69,6 @@ const getTourBySearch = async (req, resp) => {
             });
     }
     catch (err) {
-        
         resp
             .status(404)
             .json({

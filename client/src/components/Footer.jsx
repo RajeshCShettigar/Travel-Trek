@@ -19,7 +19,7 @@ const Footer = () => {
                         <Link to="/home" className="hover:underline">Home</Link>
                         </li>
                         <li className="mb-1">
-                            <a href="#" className="hover:underline">About</a>
+                            <a href="/home" className="hover:underline">About</a>
                         </li>
                         <li className="mb-1">
                             <a href="/tours" className="hover:underline">Tours</a>
@@ -41,13 +41,13 @@ const Footer = () => {
                     <h2 className="mb-3 text-sm font-semibold text-gray-900 uppercase">Contact</h2>
                     <ul className="text-gray-600 ">
                         <li className="mb-1">
-                            <a href="#" className="hover:underline"><i className="ri-links-line"></i><span className="text-bold">Address :</span>4th block Bangalore</a>
+                            <li className="hover:underline"><i className="ri-links-line"></i><span className="text-bold">Address :</span>4th block Bangalore</li>
                         </li>
                         <li className="mb-1">
-                        <a href="#" className="hover:underline"><i className="ri-mail-line"></i><span className="text-bold">Email :</span>traveltrek@gmail.com</a>
+                        <li href="#" className="hover:underline"><i className="ri-mail-line"></i><span className="text-bold">Email :</span>traveltrek245@gmail.com</li>
                         </li>
                         <li className="mb-1">
-                        <a href="#" className="hover:underline"><i className="ri-phone-line"></i><span className="text-bold">Phone :</span>+043245623</a>
+                        <li href="#" className="hover:underline"><i className="ri-phone-line"></i><span className="text-bold">Phone :</span>+043245623</li>
                         </li>
                     </ul>
                 </div>
