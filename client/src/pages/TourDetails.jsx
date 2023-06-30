@@ -13,9 +13,9 @@ const TourDetails = (tour) => {
   
   const [err, setError] = useState("");
   const [success,setSuccess]=useState("");
-  const { data: tourDetails } = useFetch(`http://localhost:9000/tours/${id}`);
+  const { data: tourDetails } = useFetch(`https://traveltrek.onrender.com/tours/${id}`);
 
-  const {data:tourReviews}=useFetch(`http://localhost:9000/reviews/${id}`); 
+  const {data:tourReviews}=useFetch(`https://traveltrek.onrender.com/reviews/${id}`); 
   
   const [tourRating,setTourRating]=useState(null);
   
@@ -44,7 +44,7 @@ const TourDetails = (tour) => {
     const rating = tourRating;
     const time = new Date().toLocaleDateString("en-US", options);
     const username = currentUser.data.username;
-    await axios.post(`http://localhost:9000/reviews/${id}`,{username,reviewText,rating,time},{
+    await axios.post(`https://traveltrek.onrender.com/reviews/${id}`,{username,reviewText,rating,time},{
       headers:{
         "Content-Type":"application/json"
       } 

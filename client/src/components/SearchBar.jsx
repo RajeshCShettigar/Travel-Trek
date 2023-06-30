@@ -21,7 +21,7 @@ const SearchBar = () => {
   }
     
   const res = await axios.get(
-    `http://localhost:9000/tours/getTourBySearch`,
+    `https://traveltrek.onrender.com/tours/getTourBySearch`,
     {
       params: {
         city: location,

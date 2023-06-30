@@ -24,7 +24,7 @@ const Home = () => {
   }
   else{  
   const res = await axios.get(
-      `http://localhost:9000/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+      `https://traveltrek.onrender.com/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
       {headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

@@ -42,7 +42,7 @@ const Bookings = ({ price ,title}) => {
           bookAt: credentials.bookAt
         });
         try {
-          await axios.post(`http://localhost:9000/booking/`, 
+          await axios.post(`https://traveltrek.onrender.com/booking/`, 
           {
             userEmail: credentials.userEmail,
             tourName: tourName, 

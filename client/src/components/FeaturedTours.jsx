@@ -4,7 +4,7 @@ import useFetch from '../hooks/useFetch';
 
 const FeaturedTours = () => {
   
-   const {data:TourData}=useFetch("http://localhost:9000/tours/getAllTours");
+   const {data:TourData}=useFetch("https://traveltrek.onrender.com/tours/getAllTours");
    //console.log(TourData);
       
   return (

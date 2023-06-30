@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 
 const TourCard = ( {tour }) => {
   const {_id, title,city, photo, price, featured,reviews } = tour;
-  const {data:tourReviews}=useFetch(`http://localhost:9000/reviews/${_id}`); 
+  const {data:tourReviews}=useFetch(`https://traveltrek.onrender.com/reviews/${_id}`); 
   //const totalRating = reviews.reduce((acc,item)=>acc+item.rating,0);
   //const avgRating=totalRating===0?"":totalRating===1?totalRating:totalRating/reviews?.length;
   return (

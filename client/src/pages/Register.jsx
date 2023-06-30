@@ -21,7 +21,7 @@ const Register = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:9000/auth/register", data, {
+      .post("https://traveltrek.onrender.com/auth/register", data, {
         headers: {
           "Content-Type": "application/json",
         },
