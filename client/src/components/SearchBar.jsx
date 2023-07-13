@@ -1,7 +1,6 @@
 import React, { useRef,useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import useFetch from '../hooks/useFetch';
-import { withRouter } from "react-router-dom";
+import axios from 'axios';
 
 const SearchBar = () => {
   const navigate = useNavigate();
@@ -11,33 +10,31 @@ const SearchBar = () => {
   const [error,setError]=useState(false);
   
   const searchHandler = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
   const location = locationRef.current.value;
   const distance = distanceRef.current.value;
   const maxGroupSize = maxGroupSizeRef.current.value;
     
   if (location === "" || distance === "" || maxGroupSize === 0) {
-      return alert("Please fill all the fields");
+      alert("Please fill all the fields");
   }
     
   const res = await axios.get(
-    `https://traveltrek.onrender.com/tours/getTourBySearch`,
-    {
-      params: {
-        city: location,
-        distance: distance,
-        maxGroupSize: maxGroupSize
-      }
-    }
-  );
+    `https://traveltrek.onrender.com/tours/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+    {headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }}
+    );
   console.log(res);
-    if (!res.ok) {
+    if (res.ok) {
       alert('Something went wrong');
-    }
-    const result = await res.json();
-    history.push(
-      `tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+    }else{
+    const result = res.data;
+    navigate(
+      `/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
       { state: result.data });
+    }
   };
 
   return (
@@ -79,7 +76,7 @@ const SearchBar = () => {
           </div>
           <div className="flex flex-row items-center">
             <button type="submit"
-              className="bg-pink-700 rounded-full text-white shadow-sm ml-4 pl-4 pr-4 pt-2 pb-2"
+              className="bg-pink-600 rounded-full text-white shadow-sm ml-4 pl-4 pr-4 pt-2 pb-2 hover:bg-pink-700"
             >
               Search
             </button>
@@ -91,4 +88,4 @@ const SearchBar = () => {
   );
 };
 
-export default withRouter(SearchBar);
+export default SearchBar;

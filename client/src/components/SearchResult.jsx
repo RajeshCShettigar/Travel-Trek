@@ -9,11 +9,11 @@ const SearchResult = () => {
   console.log(data);
 
   return (
-    <div className="justify-center text-center align-items">
-      <h1 className="text-center">Search Result</h1>
-      <div className="flex flex-row">
+    <div className="justify-center text-center align-items-center">
+      <h1 className="text-center text-3xl text-green-400">Search Result</h1>
+      <div className="flex flex-row justify-center">
         {data.length===0?(
-          <h4 className="text-center">No Tours found</h4>
+          <h4 className="text-center text-3xl text-red-400">No Tours found</h4>
         ):(
           data?.map(tour=>(
             <div className="items center">
