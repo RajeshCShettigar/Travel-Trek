@@ -1,8 +1,7 @@
-# TravelPlanner webapplication
-### Travel planner application built using reactjs,nodejs, expressjs and mongodb
-### User interface is built using tailwindCSS
-### User can book the tour write comments etc.
-
+# TravelTrek
+Traveltrek is tour planner application built using MERN stack.
+ 
+## Here the snapshots of the project
 **Home Page**
 
 ![Home](/screenshots/homepage.jpeg)
