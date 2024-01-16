@@ -1,7 +1,28 @@
-# TravelTrek
+# TravelTrek :
+## Description :
 Traveltrek is tour planner application built using MERN stack.
- 
-## Here the snapshots of the project
+
+## Technologies Used :
+- ReactJs
+- NodeJs
+- ExpressJs
+- MongoDB
+- Tailwind CSS
+- Cloudinary
+
+## Installation :
+1. Clone the repository
+2. Install dependencies
+```
+npm install
+```
+3. Run the application
+```
+npm run dev
+```
+4. Open http://localhost:5173 to view it in the browser.
+
+## Screenshots
 **Home Page**
 
 ![Home](/screenshots/homepage.jpeg)
