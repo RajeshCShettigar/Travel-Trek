@@ -1,6 +1,9 @@
 # TravelTrek :
 ## Description :
-Traveltrek is tour planner application built using MERN stack.
+- Created a web application to assist users in discovering dream destinations and booking travel tickets.
+- Features include view details and description of various destinations, ticket booking, and user reviews.
+- Employed Tailwind CSS for designing the user interface of the application.
+- Used Context API in ReactJS for user state management within the application.
 
 ## Technologies Used :
 - ReactJs
